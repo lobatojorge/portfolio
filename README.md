@@ -4,7 +4,7 @@ Portfolio personal que muestra proyectos de análisis de datos, bioinformática 
 
 ## 🌐 Visita el Portfolio
 
-El portfolio está disponible en: [Tu URL de GitHub Pages o servidor]
+El portfolio está disponible en: https://github.com/lobatojorge/portfolio
 
 ## 📋 Descripción
 
@@ -26,7 +26,7 @@ Este portfolio presenta proyectos académicos y profesionales relacionados con:
 - **Tecnologías**: R, QGIS, Geneious
 - **Código**: Disponible en `proyectos/tfm.html` y archivos R (`TAXO.R`, `FILO.R`, `Funcional.R`)
 
-### 2. [Otros proyectos que quieras mencionar]
+### 2. Variación temporal 2004-2020 en las capturas de salmón atlántico en Asturias: cambios en rasgos de la estrategia vital
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -81,5 +81,5 @@ Este portfolio es de uso personal. Los proyectos académicos incluidos son propi
 
 ---
 
-*Última actualización: 2024*
+*Última actualización: 2025*
 
