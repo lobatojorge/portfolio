@@ -4,7 +4,8 @@ Portfolio personal que muestra proyectos de análisis de datos, bioinformática 
 
 ## 🌐 Visita el Portfolio
 
-El portfolio está disponible en: https://github.com/lobatojorge/portfolio
+El portfolio está disponible en: https://lobatojorge.github.io/portfolio/
+)
 
 ## 📋 Descripción
 
