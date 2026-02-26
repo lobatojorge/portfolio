@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Lobato - Bioinformático</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <div class="hero-wrap">
+        <img src="imagenes/morning.jpg" class="hero-img" alt="Fondo">
+        
+        <div class="hero-content">
+            <h1>JORGE LOBATO</h1>
+            <p style="font-size: 1.5rem; letter-spacing: 2px; margin-top: 10px; font-weight: 300;">
+                 Bioinformático
+            </p>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://github.com/lobatojorge" target="_blank" rel="noopener noreferrer">
+                <img src="imagenes/github.png" alt="GitHub">
+            </a>
+            <a href="https://linkedin.com/in/jorge-lobato" target="_blank" rel="noopener noreferrer">
+                <img src="imagenes/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- PRESENTACIÓN SECTION -->
+    <div class="about-wrap">
+        <div class="about-content">
+            <p class="about-text">
+                Soy bioinformático especializado en análisis de datos biológicos, 
+                modelado estadístico y desarrollo de herramientas computacionales 
+                para la investigación científica.
+            </p>
+            
+            <!-- VIDEO PLACEHOLDER -->
+            <div class="video-placeholder" id="videoContainer">
+                <div class="placeholder-bg">
+                    <!-- Imagen de osos de fondo -->
+                    <img id="ososImage" src="imagenes/osos.jpg" alt="Osos" class="hidden">
+                </div>
+                <!-- Contenedor inicial con texto y botón de play -->
+                <div class="video-initial-content" id="initialContent">
+                    <p class="collaboration-text">En qué puedo colaborar:</p>
+                    <button class="youtube-play-button" id="playButton" aria-label="Mostrar imagen">
+                        <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.63-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Texto sobrepuesto (oculto inicialmente) -->
+                <div class="video-overlay-text hidden" id="overlayText">
+                    <p class="placeholder-text">Aquí va un vídeo en el que estoy trabajando.</p>
+                    <a href="#contacto" class="placeholder-cta-link">
+                        <p class="placeholder-cta">Mientras tanto ¡concertemos una <span class="videollamada-highlight">videollamada</span>!</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROYECTOS SECTION -->
+    <div class="projects-wrap">
+        <div class="projects-bg"></div>
+        <div class="projects-header">
+            <h2>PROYECTOS</h2>
+        </div>
+        <hr class="projects-divider">
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Las tarjetas se generan dinámicamente desde data/projects.json -->
+        </div>
+    </div>
+
+    <!-- CONTACTO SECTION -->
+    <div id="contacto" class="contact-wrap">
+        <h2>¿Hablamos?</h2>
+        <form action="https://formspree.io/f/mjknnddd" method="POST" class="contact-form">
+            <input type="email" name="email" placeholder="Tu correo electrónico" required>
+            <textarea name="message" placeholder="Mensaje..." rows="4"></textarea>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+
+    <script>
+        // Control de la imagen de osos
+        const playButton = document.getElementById('playButton');
+        const initialContent = document.getElementById('initialContent');
+        const overlayText = document.getElementById('overlayText');
+        const ososImage = document.getElementById('ososImage');
+        let imageShown = false;
+
+        // Verificar que los elementos existan antes de agregar event listeners
+        if (playButton && initialContent && overlayText && ososImage) {
+            // Manejar el clic en el botón de play
+            playButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                if (!imageShown) {
+                    // Ocultar contenido inicial y mostrar imagen y texto overlay
+                    initialContent.classList.add('hidden');
+                    overlayText.classList.remove('hidden');
+                    ososImage.classList.remove('hidden');
+                    
+                    imageShown = true;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Carga dinámica de proyectos desde data/projects.json
+        (function () {
+            var grid = document.getElementById('projectsGrid');
+            if (!grid) return;
+
+            function renderProjects(projects) {
+                grid.innerHTML = '';
+                projects.forEach(function (p) {
+                    var a = document.createElement('a');
+                    a.href = p.url;
+                    a.className = 'project-item';
+                    if (p.external) {
+                        a.setAttribute('target', '_blank');
+                        a.setAttribute('rel', 'noopener noreferrer');
+                    }
+                    var img = document.createElement('img');
+                    img.src = p.image;
+                    img.alt = p.title;
+                    var span = document.createElement('span');
+                    span.textContent = p.title;
+                    a.appendChild(img);
+                    a.appendChild(span);
+                    grid.appendChild(a);
+                });
+            }
+
+            function showError() {
+                grid.innerHTML = '<p class="projects-error">No se pudieron cargar los proyectos. <a href="data/projects.json">Ver datos</a>.</p>';
+            }
+
+            fetch('data/projects.json')
+                .then(function (res) {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function (data) {
+                    if (Array.isArray(data) && data.length > 0) {
+                        renderProjects(data);
+                    } else {
+                        showError();
+                    }
+                })
+                .catch(showError);
+        })();
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+# R
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user
+renv/
+renv.lock
+.Rprofile
+
+# Quarto
+_site/
+.quarto/
+*.qmd
+_quarto.yml
+portfolio.Rproj
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+*~
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos grandes o sensibles (opcional - puedes comentar estas líneas si quieres subirlos)
+# ESCRITO_NMJL.pdf
+# ideas.docx
+# yoSINFONDO.png
+
+# Node modules (si usas npm)
+node_modules/
+
+# Archivos de backup
+*.backup
+

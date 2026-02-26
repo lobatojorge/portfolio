@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis del patrón espacial y temporal de la diversidad de arañas en el PN del Teide</title>
+    <link rel="stylesheet" href="../styles.css?v=37">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+    <!-- Header Image with Title Overlay - Full Width -->
+    <div id="header-image" class="header-image-with-title header-full-width">
+        <img src="../imagenes/teide.jpg" alt="El Pico Teide corona la isla de Tenerife. En primer plano, el retamar donde se realizó el muestreo de artrópodos.">
+        <div class="header-title-overlay">
+            <h1>Análisis del patrón espacial y temporal de la diversidad de la comunidad de arañas en el Parque Nacional del Teide</h1>
+        </div>
+    </div>
+
+    <!-- PDF Download Link Above Navigation -->
+    <div class="pdf-above-nav">
+        <a href="./TFM/ESCRITO_NMJL.pdf" class="pdf-download-link" target="_blank" rel="noopener noreferrer">
+            <img src="../imagenes/pdf.png" alt="Descargar PDF del TFM" class="pdf-icon">
+        </a>
+    </div>
+
+    <!-- Navigation Sections Horizontal -->
+    <div class="nav-sections-horizontal">
+        <button class="nav-section-btn" data-section="antecedentes">
+            <img src="../imagenes/libro.png" alt="Antecedentes" class="nav-icon">
+            <span>Antecedentes</span>
+        </button>
+        <button class="nav-section-btn" data-section="objetivos">
+            <img src="../imagenes/diana.png" alt="Objetivos" class="nav-icon">
+            <span>Objetivos</span>
+        </button>
+        <button class="nav-section-btn nav-section-btn-image" data-section="metodos">
+            <img src="../imagenes/pcc.png" alt="Análisis Computacional">
+            <span>Análisis Computacional</span>
+        </button>
+    </div>
+
+
+    <!-- Navigation Sections Bottom (temporalmente ocultos) -->
+    <div class="nav-sections-bottom" style="display: none;">
+        <button class="nav-section-btn" data-section="resultados">
+            <i class="bi bi-graph-up"></i>
+            <span>Resultados</span>
+        </button>
+        <button class="nav-section-btn" data-section="discusion">
+            <i class="bi bi-chat-dots"></i>
+            <span>Discusión</span>
+        </button>
+        <button class="nav-section-btn" data-section="conclusiones">
+            <i class="bi bi-check-circle"></i>
+            <span>Conclusiones</span>
+        </button>
+        <button class="nav-section-btn" data-section="referencias">
+            <i class="bi bi-file-text"></i>
+            <span>Referencias</span>
+        </button>
+    </div>
+
+    <!-- Content Modal -->
+    <div id="content-modal" class="content-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div id="modal-body">
+                <!-- El contenido se carga aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Boxes Container -->
+    <div id="summary-boxes-container" class="summary-boxes-container"></div>
+
+    <!-- Conclusiones Section -->
+    <div class="conclusiones-section">
+        <div class="conclusiones-header" id="conclusiones-toggle">
+            <h2>Conclusiones</h2>
+            <div class="conclusiones-line"></div>
+            <i class="bi bi-chevron-down conclusiones-icon"></i>
+        </div>
+        <div class="conclusiones-content" id="conclusiones-content">
+            <ul class="conclusiones-list">
+                <li>
+                    <div class="conclusion-text">Disminución de riqueza de especies entre 1995 y 2024</div>
+                    <div class="conclusion-images">
+                        <img src="./TFM/Figura6.png" alt="Figura 6" class="conclusion-image" data-title="Figura 6: Boxplot de riqueza por año" data-description="Comparación de la riqueza de especies promedio entre ambos periodos. Se observa una disminución significativa en la mediana de riqueza (línea central de las cajas) en 2024 respecto a 1995, evidenciando una pérdida general de diversidad alfa en el Parque Nacional">
+                        <img src="./TFM/Figura7.png" alt="Figura 7" class="conclusion-image" data-title="Figura 7: Curvas de acumulación de especies" data-description="Muestra la riqueza acumulada de especies en función del número de localidades muestreadas. Se observa una disminución significativa en la riqueza total entre 1995 y 2024, indicando pérdida de especies en el Parque Nacional del Teide.">
+                    </div>
+                </li>
+                <li>
+                    <div class="conclusion-text">Homogeneización taxonómica: pérdida de las diferencias taxonómicas que caracterizaban cada localidad</div>
+                    <div class="conclusion-images">
+                        <img src="./TFM/Figura11.png" alt="Figura 11" class="conclusion-image" data-title="Figura 11: Análisis NMDS de composición de comunidades" data-description="Las comunidades de arañas se han homogeneizado entre localidades. Los puntos de diferentes sitios están más próximos en el espacio multidimensional, indicando pérdida de singularidad taxonómica característica de cada localidad.">
+                    </div>
+                </li>
+                <li>
+                    <div class="conclusion-text">Pérdida de especies epiedáficas con menor capacidad de dispersión</div>
+                    <div class="conclusion-images">
+                        <img src="./TFM/Figura8.png" alt="Figura 8" class="conclusion-image" data-title="Figura 8: Boxplot de riqueza por tipo de muestreo" data-description="Comparación de la riqueza de especies entre diferentes tipos de muestreo. El gráfico muestra la distribución de la riqueza taxonómica mediante diagramas de caja, permitiendo visualizar las diferencias y variabilidad entre los métodos de muestreo utilizados.">
+                    </div>
+                </li>
+                <li>
+                    <div class="conclusion-text">Nuevos registros de especies nativas</div>
+                </li>
+                <li>
+                    <div class="conclusion-text">Transición hacia agrupamiento filogenético/funcional</div>
+                    <div class="conclusion-images">
+                        <img src="./TFM/Figura13.png" alt="Figura 13" class="conclusion-image" data-title="Figura 13: Diversidad filogenética (PD)" data-description="No se observan cambios significativos en la diversidad filogenética entre 1995 y 2024. La estructura filogenética de la comunidad se mantiene relativamente estable a pesar de la pérdida de especies, sugiriendo conservación de relaciones evolutivas.">
+                        <img src="./TFM/Figura14.png" alt="Figura 14" class="conclusion-image" data-title="Figura 14: Diversidad funcional (FD)" data-description="Tampoco se detectan cambios significativos en la diversidad funcional. Los rasgos funcionales están altamente conservados a nivel de familia, amortiguando los efectos del reemplazamiento de especies en el funcionamiento del ecosistema.">
+                    </div>
+                </li>
+                <li>
+                    <div class="conclusion-text">Redundancia funcional amortigua cambios en FD</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección final con fondo -->
+    <div class="final-section-wrapper">
+        <!-- PRESENTACIÓN SECTION -->
+        <div class="about-wrap">
+            <div class="about-content">
+                
+                <p class="text-center" style="margin-top: 3rem;">
+                    <a href="https://github.com/lobatojorge" class="btn-portfolio" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i> Explorar Código en GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Código del Análisis -->
+        <div class="code-section-wrapper">
+        <img src="../imagenes/orde.png" alt="Ordenador con código" class="code-computer-bg">
+        <div class="code-section-overlay">
+            <button class="code-toggle-btn" id="code-toggle">
+                <h2 style="margin: 0; font-weight: 900; color: #222;">Código del Análisis</h2>
+                <i class="bi bi-chevron-down code-toggle-icon"></i>
+            </button>
+
+            <div class="code-content-container" id="code-content">
+                <p style="text-align: center; margin-bottom: 2rem; color: #666; font-size: 1.1rem;">El análisis completo se realizó en R utilizando tres scripts principales. Haz clic en cada recuadro para ver el código:</p>
+
+                <!-- Acordeón para los códigos -->
+                <div class="code-accordion">
+                    <!-- TAXO.R -->
+                    <div class="code-accordion-item">
+                        <button class="code-accordion-header" data-target="taxo">
+                            <div class="code-accordion-content">
+                                <span class="code-accordion-emoji">📊</span>
+                                <span class="code-accordion-title">Taxonomic Diversity (TD)</span>
+                            </div>
+                            <i class="bi bi-chevron-down code-accordion-icon"></i>
+                        </button>
+                        <div id="code-taxo" class="code-content">
+                            <div class="code-header">
+                                <h3>TAXO.R - Análisis de Diversidad Taxonómica</h3>
+                                <p class="code-description">Este script analiza la diversidad taxonómica (TD) mediante el cálculo de riqueza de especies, análisis NMDS, beta diversidad y curvas de acumulación.</p>
+                            </div>
+                            <pre><code class="language-r"># ============================================================================
+# TAXO.R - ANÁLISIS DE DIVERSIDAD TAXONÓMICA
+# ============================================================================
+# Este script realiza el análisis completo de diversidad taxonómica (TD)
+# Compara la riqueza de especies entre 1995 y 2024
+# Calcula beta diversidad taxonómica y genera visualizaciones
+# ============================================================================
+
+# --- CONFIGURACIÓN INICIAL ---
+setwd('F:/TFM')
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(vegan)
+library(BAT)
+library(showtext)
+
+# Cargar datos
+arañas <- read_excel("arañas.xlsx")
+
+# Limpiar y preparar datos
+arañas <- arañas[, !colnames(arañas) %in% c("Cod_DZUL", "Año", "Ordenar","X","Y",
+                                             "Camp","Localidad","Código_95","Fecha",
+                                             "Trampa","Código_muestra","Orden",
+                                             "Familia","Género","Especie",
+                                             "Determinador","Observaciones")]
+
+arañas <- arañas %>%
+  select(Código_localidad, Año2, Taxon, N_exx., Muestreo) %>%
+  rename(Año = Año2)
+
+arañas$N_exx. <- as.numeric(arañas$N_exx.)
+arañas <- arañas[complete.cases(arañas), ]  # Eliminar filas con NA
+
+# ============================================================================
+# 1. ANÁLISIS DE RIQUEZA POR AÑO
+# ============================================================================
+# Compara la riqueza de especies entre 1995 y 2024
+
+riqueza <- arañas %>%
+  filter(Año %in% c(1995, 2024)) %>%
+  group_by(Código_localidad, Año) %>%
+  summarise(riqueza = n_distinct(Taxon), .groups = "drop")
+
+# Visualización: Boxplot de riqueza
+font_add_google("Lexend", "lexend")
+showtext_auto()
+
+ggplot(riqueza, aes(x = factor(Año), y = riqueza, fill = factor(Año))) +
+  geom_boxplot() +
+  labs(title = "Comparación de Riqueza entre 1995 y 2024",
+       x = "Año", y = "Riqueza", fill = "Año") +
+  scale_fill_manual(values = c("#AEC6CF", "#F08080")) +
+  theme_minimal() +
+  theme(text = element_text(family = "lexend"),
+        plot.title = element_text(size = 50, face = "bold"),
+        axis.title = element_text(size = 30),
+        axis.text = element_text(size = 40),
+        legend.title = element_text(size = 30),
+        legend.text = element_text(size = 25))
+
+ggsave("boxplot_riqueza.png", width = 6, height = 4, dpi = 300)
+
+# Modelo estadístico: GLM Poisson
+riqueza$Año <- factor(riqueza$Año)
+modelo_poisson <- glm(riqueza ~ Año, data = riqueza, family = poisson)
+summary(modelo_poisson)
+anova_result <- anova(modelo_poisson, test = "Chisq")
+
+# ============================================================================
+# 2. RIQUEZA POR AÑO Y TIPO DE MUESTREO
+# ============================================================================
+# Analiza diferencias entre métodos de muestreo (trampas vs. métodos activos)
+
+riqueza_loc_muest <- arañas %>%
+  group_by(Código_localidad, Año, Muestreo) %>%
+  summarise(Riqueza = n_distinct(Taxon), .groups = "drop")
+
+riqueza_loc_muest$Año <- as.factor(riqueza_loc_muest$Año)
+
+ggplot(riqueza_loc_muest, aes(x = Muestreo, y = Riqueza, fill = Año)) +
+  geom_boxplot(lwd = 0.3, outlier.size = 0.7) +
+  labs(y = "Riqueza") +
+  scale_fill_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080")) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title.x = element_blank(),
+        text = element_text(family = "lexend"))
+
+ggsave("riqueza_año_muest.png", width = 6, height = 4, dpi = 300)
+
+# Modelo: Negative Binomial
+library(MASS)
+library(car)
+library(DHARMa)
+library(emmeans)
+
+model_NB <- glm.nb(Riqueza ~ Año * Muestreo, data = riqueza_loc_muest, na.action = "na.omit")
+summary(model_NB)
+anova_am <- Anova(model_NB)
+simulationOutputNB <- simulateResiduals(fittedModel = model_NB)
+plot(simulationOutputNB)
+
+marginal <- emmeans(model_NB, ~ Año * Muestreo)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 3. ANÁLISIS NMDS (Non-Metric Multidimensional Scaling)
+# ============================================================================
+# Visualiza la similitud entre comunidades usando ordenación no métrica
+
+# Preparar matriz de presencia/ausencia
+arañas$localidad_año <- paste(arañas$Código_localidad, arañas$Año, sep = "_")
+arañas_resumido <- arañas %>%
+  group_by(localidad_año, Taxon) %>%
+  summarise(N_exx. = sum(N_exx., na.rm = TRUE), .groups = "drop")
+
+matriz_NMDS <- tidyr::pivot_wider(
+  data = arañas_resumido,
+  id_cols = localidad_año,
+  names_from = Taxon,
+  values_from = N_exx.,
+  values_fill = list(N_exx. = 0)
+)
+
+# Convertir a presencia/ausencia
+NMDSPresAu <- matriz_NMDS %>%
+  mutate(across(-localidad_año, ~ ifelse(. > 0, 1, 0)))
+NMDSPresAu <- NMDSPresAu[, -1]
+
+# Calcular distancia de Jaccard y realizar NMDS
+matriz_distancia <- vegdist(NMDSPresAu, method = "jaccard", na.rm = TRUE)
+nmds_result <- metaMDS(matriz_distancia, k = 2, trymax = 100)
+
+# Extraer coordenadas de los sitios
+nmds_sites <- as.data.frame(scores(nmds_result, display = "sites"))
+nmds_sites$localidad_año <- rownames(NMDSPresAu)
+nmds_sites$localidad <- sub("_.*", "", nmds_sites$localidad_año)
+nmds_sites$año <- sub(".*_", "", nmds_sites$localidad_año)
+
+# Crear polígonos convexos (hull) por año
+hull <- nmds_sites %>%
+  group_by(año) %>%
+  slice(chull(NMDS1, NMDS2))
+
+# Visualización NMDS con polígonos
+grafico <- ggplot(data = nmds_sites, aes(x = NMDS1, y = NMDS2)) +
+  geom_point(aes(color = localidad), size = 3, show.legend = FALSE) +
+  geom_polygon(data = hull, aes(group = año, fill = año), alpha = 0.3) +
+  labs(title = "NMDS por Año y Localidad",
+       x = "NMDS1", y = "NMDS2") +
+  theme_minimal() +
+  theme(text = element_text(family = "lexend", size = 12),
+        plot.title = element_text(hjust = 0.5, size = 18, family = "lexend")) +
+  scale_color_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080")) +
+  scale_fill_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080"))
+
+print(grafico)
+
+# ============================================================================
+# 4. BETA DIVERSIDAD TAXONÓMICA
+# ============================================================================
+# Calcula beta diversidad total, reemplazamiento y riqueza
+
+NMDSPresAu <- as.data.frame(NMDSPresAu)
+rownames(NMDSPresAu) <- rownames(NMDSPresAu)
+NMDSPresAu <- NMDSPresAu[, -1]
+
+Tbeta <- beta(NMDSPresAu, func = "jaccard", abund = FALSE)
+
+# Extraer componentes de beta diversidad
+TBtotal <- as.matrix(Tbeta$Btotal)
+TBtotal_df <- as.data.frame(TBtotal)
+write.xlsx(TBtotal_df, "TBtotal.xlsx")
+
+TBrepl <- as.matrix(Tbeta$Brepl)
+TBrepl_df <- as.data.frame(TBrepl)
+write.xlsx(TBrepl_df, "TBrepl.xlsx")
+
+TBrich <- as.matrix(Tbeta$Brich)
+TBrich_df <- as.data.frame(TBrich)
+write.xlsx(TBrich_df, "TBrich.xlsx")
+
+# ============================================================================
+# 5. CURVAS DE ACUMULACIÓN DE ESPECIES
+# ============================================================================
+# Compara las curvas de acumulación entre 1995 y 2024
+# Permite estimar la completitud del muestreo
+
+arañas_95 <- arañas %>% filter(Año == 1995)
+arañas_24 <- arañas %>% filter(Año == 2024)
+
+# Crear matrices de especies por localidad
+matriz_95 <- arañas_95 %>%
+  pivot_wider(names_from = Taxon, values_from = N_exx.,
+              values_fn = sum, values_fill = 0)
+matriz_24 <- arañas_24 %>%
+  pivot_wider(names_from = Taxon, values_from = N_exx.,
+              values_fn = sum, values_fill = 0)
+
+matriz_95 <- matriz_95[, -1]
+matriz_24 <- matriz_24[, -1]
+
+# Calcular curvas de acumulación
+accum_95 <- specaccum(matriz_95, method = "random", permutations = 1000)
+specpool_95 <- specpool(matriz_95)
+completitud_95 <- specpool_95$Species / specpool_95$chao * 100
+
+accum_24 <- specaccum(matriz_24, method = "random", permutations = 1000)
+specpool_24 <- specpool(matriz_24)
+completitud_24 <- specpool_24$Species / specpool_24$chao * 100
+
+# Preparar datos para visualización
+accum_95_df <- data.frame(Sites = accum_95$sites, Richness = accum_95$richness, SD = accum_95$sd)
+accum_24_df <- data.frame(Sites = accum_24$sites, Richness = accum_24$richness, SD = accum_24$sd)
+accum_95_df$Year <- "1995"
+accum_24_df$Year <- "2024"
+accum_df <- rbind(accum_95_df, accum_24_df)
+
+# Calcular pendientes de las curvas
+pendientes <- accum_df %>%
+  group_by(Year) %>%
+  do({
+    model <- lm(Richness ~ Sites, data = .)
+    pendiente <- coef(model)[2]
+    data.frame(pendiente)
+  })
+
+# Visualización de curvas de acumulación
+accum_df$Sites <- as.factor(accum_df$Sites)
+
+ggplot(accum_df, aes(x = Sites, y = Richness, color = Year, group = Year)) +
+  geom_point() +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080")) +
+  annotate("text", x = 8, y = 70,
+           label = paste("Chao 1995 =", round(specpool_95$chao)),
+           col = "black", size = 4, family = "lexend") +
+  annotate("text", x = 10, y = 40,
+           label = paste("Chao 2024 =", round(specpool_24$chao)),
+           col = "black", size = 4, family = "lexend") +
+  labs(title = "Curvas de acumulación de especies por año",
+       x = "Número de localidades",
+       y = "Riqueza acumulada",
+       color = "Año") +
+  theme_minimal() +
+  theme(text = element_text(family = "lexend", size = 10),
+        plot.title = element_text(hjust = 0.5, size = 20, family = "lexend"),
+        axis.title = element_text(size = 15, family = "lexend"),
+        axis.text = element_text(size = 10, family = "lexend"),
+        legend.title = element_text(size = 15, family = "lexend"),
+        legend.text = element_text(size = 10, family = "lexend")) +
+  scale_x_discrete(breaks = 1:12) +
+  geom_smooth(method = "lm", aes(group = Year), se = FALSE,
+              linetype = "dashed", color = "grey", size = 1) +
+  geom_text(data = pendientes,
+            aes(x = 6, y = ifelse(Year == "1995", 58, 32),
+                label = paste("m = ", round(pendiente, 2))),
+            size = 3, color = "black", family = "lexend", inherit.aes = FALSE)
+
+ggsave("curvas.png", width = 20, height = 20, units = "cm")
+
+# ============================================================================
+# FIN DEL SCRIPT TAXO.R
+# ============================================================================</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILO.R -->
+                <div class="code-accordion-item">
+                    <button class="code-accordion-header" data-target="filo">
+                        <div class="code-accordion-content">
+                            <span class="code-accordion-emoji">🌳</span>
+                            <span class="code-accordion-title">Phylogenetic Diversity (PD)</span>
+                        </div>
+                        <i class="bi bi-chevron-down code-accordion-icon"></i>
+                    </button>
+                    <div id="code-filo" class="code-content">
+                        <div class="code-header">
+                            <h3>FILO.R - Análisis de Diversidad Filogenética</h3>
+                            <p class="code-description">Este script analiza la diversidad filogenética (PD) utilizando árboles filogenéticos reconstruidos, calculando PD, MPD, MNTD y beta diversidad filogenética.</p>
+                        </div>
+                    <pre><code class="language-r"># ============================================================================
+# FILO.R - ANÁLISIS DE DIVERSIDAD FILOGENÉTICA
+# ============================================================================
+# Este script realiza el análisis completo de diversidad filogenética (PD)
+# Utiliza árboles filogenéticos reconstruidos para analizar relaciones evolutivas
+# Calcula PD, MPD, MNTD y beta diversidad filogenética
+# ============================================================================
+
+setwd("F:/TFM")
+library(readxl)
+library(dplyr)
+library(ape)
+library(phytools)
+library(picante)
+library(ggplot2)
+library(BAT)
+library(showtext)
+
+# --- PREPARACIÓN DE DATOS DE COMUNIDAD ---
+arañas <- read_excel("arañas.xlsx")
+arañas <- arañas %>%
+  dplyr::select(Código_localidad, Año2, Taxon, N_exx., Muestreo) %>%
+  dplyr::rename(Año = Año2)
+
+arañas$N_exx. <- as.numeric(arañas$N_exx.)
+arañas <- arañas[complete.cases(arañas), ]
+
+# Crear matriz de abundancia
+matrizab <- arañas %>%
+  dplyr::group_by(Código_localidad, Taxon, Año) %>%
+  dplyr::summarise(Abundance = sum(N_exx.))
+
+matrizab <- matrizab[complete.cases(matrizab), ]
+
+# Limpiar nombres de taxones para coincidir con el árbol filogenético
+matrizab$Taxon <- gsub("\\(|\\)", "", matrizab$Taxon)
+matrizab$Taxon <- gsub(" ", "_", matrizab$Taxon)
+
+# Crear matriz de presencia/ausencia
+matrizab$LocAño <- paste(matrizab$Código_localidad, matrizab$Año, sep = "_")
+matrizab_table <- tidyr::pivot_wider(matrizab, LocAño,
+                                     names_from = "Taxon",
+                                     values_from = "Abundance",
+                                     values_fill = 0)
+
+library(tibble)
+samp <- matrizab_table
+samp <- samp %>% remove_rownames %>% tibble::column_to_rownames(var = "LocAño")
+samp <- as.data.frame(samp)
+samp[,][samp[,] > 1] <- 1  # Convertir a presencia/ausencia
+samp[] <- lapply(samp, as.numeric)
+
+setwd("F:/TFM/desde enero/Funcional")
+zonas <- read_excel("zonas.xlsx")  # Para agrupamientos posteriores
+
+# ============================================================================
+# 1. CARGA Y PREPARACIÓN DEL ÁRBOL FILOGENÉTICO
+# ============================================================================
+
+setwd("F:/TFM/desde enero/Filogenetica")
+tree <- ape::read.tree("RAxML_bestTree.result")
+
+# Filtrar especies presentes en los datos
+species_present <- colnames(samp)[colSums(samp) > 0]
+
+# Forzar árbol ultramétrico y podar
+ut <- force.ultrametric(tree, method = c("nnls", "extend"))
+pt <- keep.tip(ut, species_present)
+
+plot(pt)
+write.nexus(pt, file = "arbol_podado.nex")
+
+# ============================================================================
+# 2. CÁLCULO DE DIVERSIDAD FILOGENÉTICA (PD)
+# ============================================================================
+# PD mide la longitud total de las ramas del árbol filogenético
+# que conectan todas las especies presentes en una comunidad
+
+SES_PD <- ses.pd(samp, pt, null.model = "taxa.labels",
+                 runs = 999, iterations = 1000, include.root = TRUE)
+
+SES_PD_zonas <- cbind(SES_PD, zonas)
+SES_PD_zonas$año <- as.factor(SES_PD_zonas$año)
+SES_PD_zonas$zona <- factor(SES_PD_zonas$zona, levels = unique(c("W", "E")))
+
+# Visualización
+plot_fd <- ggplot(SES_PD_zonas, aes(x = año, y = pd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("PD.png", plot = plot_fd)
+
+# Modelo estadístico
+library(car)
+library(DHARMa)
+library(emmeans)
+
+modelo_pd <- glm(pd.obs.z ~ año * zona, data = SES_PD_zonas,
+                 family = gaussian, na.action = na.omit)
+summary(modelo_pd)
+Anova(modelo_pd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_pd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_pd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 3. MEAN PAIRWISE DISTANCE (MPD)
+# ============================================================================
+# MPD mide la distancia filogenética promedio entre todos los pares de especies
+
+distm <- cophenetic.phylo(pt)  # Matriz de distancias filogenéticas
+
+SES_MPD <- ses.mpd(samp, distm, null.model = "taxa.labels",
+                   runs = 999, iterations = 1000)
+
+SES_MPD_zonas <- cbind(SES_MPD, zonas)
+SES_MPD_zonas$año <- as.factor(SES_MPD_zonas$año)
+SES_MPD_zonas$zona <- factor(SES_MPD_zonas$zona, levels = unique(c("W", "E")))
+
+plot_fmpd <- ggplot(SES_MPD_zonas, aes(x = año, y = mpd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("Plot_PD_MPD.png", plot = plot_fmpd)
+
+modelo_mpd <- glm(mpd.obs.z ~ año * zona, data = SES_MPD_zonas,
+                  family = gaussian, na.action = na.omit)
+summary(modelo_mpd)
+Anova(modelo_mpd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_mpd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_mpd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 4. MEAN NEAREST TAXON DISTANCE (MNTD)
+# ============================================================================
+# MNTD mide la distancia filogenética promedio al taxón más cercano
+
+SES_MNTD <- ses.mntd(samp, distm, null.model = "taxa.labels",
+                     runs = 999, iterations = 1000)
+
+SES_MNTD_zonas <- cbind(SES_MNTD, zonas)
+SES_MNTD_zonas$año <- as.factor(SES_MNTD_zonas$año)
+SES_MNTD_zonas$zona <- factor(SES_MNTD_zonas$zona, levels = unique(c("W", "E")))
+
+plot_fmntd <- ggplot(SES_MNTD_zonas, aes(x = año, y = mntd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("Plot_PD_MNTD.png", plot = plot_fmntd)
+
+modelo_mntd <- glm(mntd.obs.z ~ año * zona, data = SES_MNTD_zonas,
+                   family = gaussian, na.action = na.omit)
+summary(modelo_mntd)
+Anova(modelo_mntd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_mntd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_mntd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 5. VISUALIZACIÓN CONJUNTA: PD, MPD Y MNTD
+# ============================================================================
+
+library(patchwork)
+font_add_google("Lexend", "lexend")
+showtext_auto()
+
+pd_data <- data.frame(año = SES_PD_zonas$año, valor = SES_PD_zonas$pd.obs.z,
+                      tipo = "PD", zona = SES_PD_zonas$zona)
+mpd_data <- data.frame(año = SES_MPD_zonas$año, valor = SES_MPD_zonas$mpd.obs.z,
+                       tipo = "MPD", zona = SES_MPD_zonas$zona)
+mntd_data <- data.frame(año = SES_MNTD_zonas$año, valor = SES_MNTD_zonas$mntd.obs.z,
+                        tipo = "MNTD", zona = SES_MNTD_zonas$zona)
+
+combined_data <- rbind(pd_data, mpd_data, mntd_data)
+
+ggplot(combined_data, aes(x = zona, y = valor, fill = factor(año))) +
+  geom_boxplot(position = position_dodge(width = 0.75)) +
+  scale_fill_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080")) +
+  facet_wrap(~ tipo) +
+  theme_minimal(base_size = 14, base_family = "lexend") +
+  labs(x = "Zona", y = "SES", fill = "Año") +
+  theme(legend.position = "top",
+        axis.title = element_text(size = 16),
+        axis.text = element_text(size = 14),
+        strip.text = element_text(size = 16),
+        panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5))
+
+setwd("F:/TFM/desde enero/Filogenetica")
+ggsave("zona_año.png", width = 8, height = 6)
+
+# ============================================================================
+# 6. BETA DIVERSIDAD FILOGENÉTICA
+# ============================================================================
+
+fbeta <- beta(samp, pt, func = "jaccard", abund = FALSE)
+
+fBtotal <- as.matrix(fbeta$Btotal)
+fBtotal_df <- as.data.frame(fBtotal)
+write.xlsx(fBtotal_df, "fBtotal.xlsx")
+
+fBrepl <- as.matrix(fbeta$Brepl)
+fBrepl_df <- as.data.frame(fBrepl)
+write.xlsx(fBrepl_df, "fBrepl.xlsx")
+
+fBrich <- as.matrix(fbeta$Brich)
+fBrich_df <- as.data.frame(fBrich)
+write.xlsx(fBrich_df, "fBrich.xlsx")
+
+# ============================================================================
+# FIN DEL SCRIPT FILO.R
+# ============================================================================</code></pre>
+                        </div>
+                    </div>
+
+                <!-- Funcional.R -->
+                <div class="code-accordion-item">
+                    <button class="code-accordion-header" data-target="funcional">
+                        <div class="code-accordion-content">
+                            <span class="code-accordion-emoji">⚙️</span>
+                            <span class="code-accordion-title">Functional Diversity (FD)</span>
+                        </div>
+                        <i class="bi bi-chevron-down code-accordion-icon"></i>
+                    </button>
+                    <div id="code-funcional" class="code-content">
+                        <div class="code-header">
+                            <h3>Funcional.R - Análisis de Diversidad Funcional</h3>
+                            <p class="code-description">Este script analiza la diversidad funcional (FD) utilizando rasgos funcionales de las especies, ponderados mediante Random Forest, y calcula índices de diversidad funcional.</p>
+                        </div>
+                        <pre><code class="language-r"># ============================================================================
+# Funcional.R - ANÁLISIS DE DIVERSIDAD FUNCIONAL
+# ============================================================================
+# Este script realiza el análisis completo de diversidad funcional (FD)
+# Utiliza rasgos funcionales de las especies para construir un árbol funcional
+# Calcula índices de diversidad funcional y beta diversidad funcional
+# ============================================================================
+
+setwd("F:/TFM/desde enero/Funcional")
+library(xlsx)
+library(randomForest)
+library(cluster)
+library(dendextend)
+library(factoextra)
+library(ape)
+library(picante)
+library(ggplot2)
+library(BAT)
+library(showtext)
+
+# ============================================================================
+# 1. CARGA Y PREPARACIÓN DE LA MATRIZ DE RASGOS FUNCIONALES
+# ============================================================================
+
+traits <- read.xlsx2("matrizTraits.xlsx", sheetIndex = 1, row.names = 1)
+str(traits)  # Verificar estructura
+
+# ============================================================================
+# 2. PONDERACIÓN DE RASGOS MEDIANTE RANDOM FOREST
+# ============================================================================
+# Utilizamos Random Forest no supervisado para determinar la importancia
+# relativa de cada rasgo funcional
+
+# Preparar datos: numéricos y factores
+traits[, 1:3] <- lapply(traits[, 1:3], as.numeric)
+traits[, 4:19] <- lapply(traits[, 4:19], factor)
+
+# Estandarizar rasgos numéricos
+traits[, c(1, 2, 3)] <- scale(traits[, c(1, 2, 3)])
+
+# Entrenar modelo Random Forest
+rf_model <- randomForest(x = traits[, 1:19], importance = TRUE)
+importance(rf_model)  # Ver importancia de los rasgos
+varImpPlot(rf_model)  # Visualización de importancia
+
+# Extraer y normalizar importancia
+importancia_traits <- importance(rf_model)[, 1]
+importancia_traits <- importancia_traits / sum(importancia_traits)
+
+# ============================================================================
+# 3. CONSTRUCCIÓN DEL ÁRBOL FUNCIONAL
+# ============================================================================
+# Crear matriz de distancias ponderada y árbol jerárquico
+
+matDistancia <- daisy(traits, metric = "gower", weights = importancia_traits)
+hc <- hclust(as.dist(matDistancia), method = "ward.D2")
+dend <- as.dendrogram(hc)
+groups <- cutree(hc, k = 3)
+dend <- color_branches(dend, k = 3)
+
+# Visualización del dendrograma
+fviz_dend(dend, k = 3, cex = 0.3, k_colors = rainbow(3),
+          rect = TRUE, horiz = TRUE)
+
+# Convertir a árbol filogenético para análisis posterior
+arbol_phylo <- as.phylo(hclust(as.dist(matDistancia), method = "average"))
+write.nexus(arbol_phylo, file = "arbolbueno.nexus")
+
+# ============================================================================
+# 4. ANÁLISIS DE CORRELACIÓN ENTRE RASGOS
+# ============================================================================
+
+library(corrplot)
+traits <- data.frame(lapply(traits, as.numeric))
+cor_matrix <- cor(traits, method = "pearson")
+write_xlsx(as.data.frame(cor_matrix), "correlation_matrix.xlsx")
+corrplot(cor_matrix, method = "color", type = "upper", tl.cex = 0.8)
+
+# ============================================================================
+# 5. PREPARACIÓN DE DATOS DE COMUNIDAD
+# ============================================================================
+
+library(readxl)
+setwd("F:/TFM")
+arañas <- read_excel("arañas.xlsx")
+
+# Limpiar datos
+arañas <- arañas[, !colnames(arañas) %in% c("Cod_DZUL", "Año", "Ordenar","X","Y",
+                                             "Camp","Localidad","Código_95","Fecha",
+                                             "Muestreo","Trampa","Código_muestra",
+                                             "Orden","Familia","Género","Especie",
+                                             "Determinador","Observaciones")]
+
+arañas$N_exx. <- as.numeric(arañas$N_exx.)
+arañas <- arañas[complete.cases(arañas), ]
+
+# Crear matriz de presencia/ausencia
+arañas_filtradas <- arañas %>%
+  dplyr::group_by(Código_localidad, Taxon, Año2) %>%
+  dplyr::summarise(Abundance = sum(N_exx.))
+
+arañas_filtradas <- arañas_filtradas[complete.cases(arañas_filtradas), ]
+arañas_filtradas$LocAño <- paste(arañas_filtradas$Código_localidad,
+                                 arañas_filtradas$Año2, sep = "_")
+
+samp <- tidyr::pivot_wider(arañas_filtradas, LocAño,
+                          names_from = "Taxon",
+                          values_from = "Abundance",
+                          values_fill = 0)
+
+samp <- samp %>% remove_rownames %>% tibble::column_to_rownames(var = "LocAño")
+samp <- as.data.frame(samp)
+samp[,][samp[,] > 1] <- 1  # Convertir a presencia/ausencia
+samp[] <- lapply(samp, as.numeric)
+
+setwd("F:/TFM/desde enero/Funcional")
+zonass <- read_excel("zonas.xlsx")
+
+# ============================================================================
+# 6. CÁLCULO DE DIVERSIDAD FUNCIONAL (fPD)
+# ============================================================================
+# Utilizamos el árbol funcional como si fuera filogenético
+# para calcular diversidad funcional
+
+Ftree <- read.nexus("arbolbueno.nexus")
+Ftree$tip.label <- gsub("'", "", Ftree$tip.label)
+
+SES_fPD <- ses.pd(samp, Ftree, null.model = "taxa.labels",
+                  runs = 999, iterations = 1000, include.root = TRUE)
+
+SES_fPD_zonass <- cbind(SES_fPD, zonass)
+SES_fPD_zonass$año <- as.factor(SES_fPD_zonass$año)
+SES_fPD_zonass$zona <- factor(SES_fPD_zonass$zona, levels = unique(c("W", "E")))
+
+plot_fd <- ggplot(SES_fPD_zonass, aes(x = año, y = pd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("pd.png", plot = plot_fd)
+
+# Modelo estadístico
+library(car)
+library(DHARMa)
+library(emmeans)
+
+modelo_pd <- glm(pd.obs.z ~ año * zona, data = SES_fPD_zonass,
+                 family = gaussian, na.action = na.omit)
+summary(modelo_pd)
+Anova(modelo_pd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_pd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_pd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 7. MEAN PAIRWISE DISTANCE FUNCIONAL (fMPD)
+# ============================================================================
+
+distm <- cophenetic.phylo(Ftree)
+
+SES_MPD <- ses.mpd(samp, distm, null.model = "taxa.labels",
+                   runs = 999, iterations = 1000)
+
+SES_MPD_zonass <- cbind(SES_MPD, zonass)
+SES_MPD_zonass$año <- as.factor(SES_MPD_zonass$año)
+SES_MPD_zonass$zona <- factor(SES_MPD_zonass$zona, levels = unique(c("W", "E")))
+
+plot_fmpd <- ggplot(SES_MPD_zonass, aes(x = año, y = mpd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("MPD.png", plot = plot_fmpd)
+
+modelo_mpd <- glm(mpd.obs.z ~ año * zona, data = SES_MPD_zonass,
+                  family = gaussian, na.action = na.omit)
+summary(modelo_mpd)
+Anova(modelo_mpd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_mpd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_mpd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 8. MEAN NEAREST TAXON DISTANCE FUNCIONAL (fMNTD)
+# ============================================================================
+
+SES_MNTD <- ses.mntd(samp, distm, null.model = "taxa.labels",
+                     runs = 999, iterations = 1000)
+
+SES_MNTD_zonass <- cbind(SES_MNTD, zonass)
+SES_MNTD_zonass$año <- as.factor(SES_MNTD_zonass$año)
+SES_MNTD_zonass$zona <- factor(SES_MNTD_zonass$zona, levels = unique(c("W", "E")))
+
+plot_fmntd <- ggplot(SES_MNTD_zonass, aes(x = año, y = mntd.obs.z, fill = zona)) +
+  geom_boxplot(width = 0.5, lwd = 0.3, outlier.size = 0.7) +
+  theme_bw()
+
+ggsave("MNTD.png", plot = plot_fmntd)
+
+modelo_mntd <- glm(mntd.obs.z ~ año * zona, data = SES_MNTD_zonass,
+                   family = gaussian, na.action = na.omit)
+summary(modelo_mntd)
+Anova(modelo_mntd)
+
+simulationOutput <- simulateResiduals(fittedModel = modelo_mntd)
+plot(simulationOutput)
+
+marginal <- emmeans(modelo_mntd, ~ año * zona)
+pairs(marginal, adjust = "tukey")
+
+# ============================================================================
+# 9. VISUALIZACIÓN CONJUNTA: fPD, fMPD Y fMNTD
+# ============================================================================
+
+font_add_google("Lexend", "lexend")
+showtext_auto()
+
+fpd_data <- data.frame(año = SES_fPD_zonass$año, valor = SES_fPD_zonass$pd.obs.z,
+                       tipo = "fPD", zona = SES_fPD_zonass$zona)
+fmpd_data <- data.frame(año = SES_MPD_zonass$año, valor = SES_MPD_zonass$mpd.obs.z,
+                        tipo = "fMPD", zona = SES_MPD_zonass$zona)
+fmntd_data <- data.frame(año = SES_MNTD_zonass$año, valor = SES_MNTD_zonass$mntd.obs.z,
+                         tipo = "fMNTD", zona = SES_MNTD_zonass$zona)
+
+combined_data <- rbind(fpd_data, fmpd_data, fmntd_data)
+combined_data$tipo <- factor(combined_data$tipo, levels = c("fPD", "fMPD", "fMNTD"))
+
+ggplot(combined_data, aes(x = zona, y = valor, fill = año)) +
+  geom_boxplot(position = position_dodge(width = 0.75)) +
+  scale_fill_manual(values = c("1995" = "#AEC6CF", "2024" = "#F08080")) +
+  facet_wrap(~ tipo) +
+  theme_minimal(base_size = 14, base_family = "lexend") +
+  labs(x = "Zona", y = "SES", fill = "Año") +
+  theme(legend.position = "top",
+        axis.title = element_text(size = 16),
+        axis.text = element_text(size = 14),
+        strip.text = element_text(size = 16),
+        panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5))
+
+ggsave("zona_año.png", width = 8, height = 6)
+
+# ============================================================================
+# 10. BETA DIVERSIDAD FUNCIONAL
+# ============================================================================
+
+library(vegan)
+fbeta <- beta(samp, Ftree, func = "jaccard", abund = FALSE)
+
+fBtotal <- as.matrix(fbeta$Btotal)
+fBtotal_df <- as.data.frame(fBtotal)
+write.xlsx(fBtotal_df, "fBtotal.xlsx")
+
+fBrepl <- as.matrix(fbeta$Brepl)
+fBrepl_df <- as.data.frame(fBrepl)
+write.xlsx(fBrepl_df, "fBrepl.xlsx")
+
+fBrich <- as.matrix(fbeta$Brich)
+fBrich_df <- as.data.frame(fBrich)
+write.xlsx(fBrich_df, "fBrich.xlsx")
+
+# Contribución de especies
+spcontribution <- contribution(samp, Ftree, abund = FALSE)
+
+# Funciones auxiliares para análisis adicionales
+obtener_top3 <- function(fila) {
+  orden <- order(fila, decreasing = TRUE, na.last = NA)
+  top3_valores <- fila[orden][1:3]
+  top3_especies <- names(fila)[orden][1:3]
+  return(c(top3_especies, top3_valores))
+}
+
+top3_resultados <- t(apply(spcontribution, 1, obtener_top3))
+top3_resultados <- as.data.frame(top3_resultados)
+top3_resultados <- top3_resultados[, c(1, 4, 2, 5, 3, 6)]
+write.xlsx(top3_resultados, "top3.xlsx")
+
+# Otros índices funcionales
+disp_result <- dispersion(samp, Ftree, distm, func = "originality",
+                          abund = FALSE, relative = TRUE)
+write.xlsx(disp_result, "disp.xlsx")
+
+evenness_result <- evenness(samp, Ftree, distm, method = "expected",
+                           func = "camargo", abund = FALSE)
+write.xlsx(evenness_result, "evenness.xlsx")
+
+evenness_contrib <- evenness.contribution(samp, Ftree, distm,
+                                         method = "expected",
+                                         func = "camargo", abund = FALSE)
+write.xlsx(evenness_contrib, "even_con.xlsx")
+
+originality_result <- BAT::originality(samp, Ftree, distm,
+                                       abund = FALSE, relative = FALSE)
+write.xlsx(originality_result, "originality.xlsx")
+
+# ============================================================================
+# FIN DEL SCRIPT Funcional.R
+# ============================================================================</code></pre>
+                        </div>
+                    </div>
+                </div> <!-- Cierre de code-accordion -->
+            </div> <!-- Cierre de code-content-container -->
+        </div> <!-- Cierre de code-section-overlay -->
+    </div> <!-- Cierre de code-section-wrapper -->
+    </div> <!-- Cierre de final-section-wrapper -->
+
+    <script>
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables globales para tooltips
+            let currentFiguraTooltip = null;
+            let currentMetodoTooltip = null;
+
+            // Definiciones de figuras
+            const figuraDefinitions = {
+                '1': {
+                    titulo: 'Figura 1: Curvas de acumulación de especies',
+                    imagen: '../imagenes/curvas.jpeg',
+                    descripcion: 'Comparación de las curvas de acumulación de especies entre 1995 y 2024. Las curvas muestran la riqueza acumulada de especies en función del número de localidades muestreadas, permitiendo evaluar la completitud del muestreo y comparar la diversidad entre ambos períodos. Se observa una disminución significativa en la riqueza acumulada en 2024 comparado con 1995.'
+                },
+                '2': {
+                    titulo: 'Figura 2: Análisis NMDS de comunidades',
+                    imagen: '../imagenes/NMDSbueno.jpeg',
+                    descripcion: 'Análisis de ordenación no métrica multidimensional (NMDS) mostrando la similitud entre las comunidades de arañas de diferentes localidades en 1995 y 2024. Los polígonos representan el espacio ocupado por cada año de muestreo. La reducción en la dispersión de los puntos y la superposición de polígonos entre años ilustra el proceso de homogeneización taxonómica, donde las comunidades de diferentes localidades se han vuelto más similares entre sí.'
+                },
+                '10': {
+                    titulo: 'Figura 10: Diagrama de Venn',
+                    imagen: '../imagenes/venn_figura10.jpeg',
+                    descripcion: 'Diagrama de Venn mostrando la superposición de especies entre los diferentes tipos de diversidad (taxonómica, filogenética y funcional) y entre los años de estudio (1995 y 2024). Este diagrama permite visualizar las relaciones y solapamientos entre las diferentes dimensiones de la diversidad.'
+                }
+            };
+
+            // Funciones para tooltips de figuras
+            function createFiguraTooltip(figuraData, referenceElement) {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.remove();
+                    currentFiguraTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'figura-tooltip';
+                tooltip.innerHTML = `
+                    <div class="figura-tooltip-header">
+                        <h3>${figuraData.titulo}</h3>
+                    </div>
+                    <img src="${figuraData.imagen}" alt="${figuraData.titulo}" class="figura-tooltip-image">
+                    <div class="figura-tooltip-description">
+                        ${figuraData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentFiguraTooltip = tooltip;
+
+                const rect = referenceElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+                
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+                
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeFiguraTooltip() {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentFiguraTooltip) {
+                            currentFiguraTooltip.remove();
+                            currentFiguraTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Función para referencias de figuras
+            function initializeFiguraReferences() {
+                const figuraReferences = document.querySelectorAll('.figura-reference');
+
+                figuraReferences.forEach(reference => {
+                    const figuraNum = reference.getAttribute('data-figura');
+                    const figuraData = figuraDefinitions[figuraNum];
+
+                    if (figuraData) {
+                        reference.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                createFiguraTooltip(figuraData, this);
+                            }
+                        });
+
+                        reference.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                closeFiguraTooltip();
+                            }
+                        });
+
+                        reference.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentFiguraTooltip && currentFiguraTooltip.classList.contains('active')) {
+                                    closeFiguraTooltip();
+                                } else {
+                                    createFiguraTooltip(figuraData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Funciones para tooltips de métodos
+            function createMetodoTooltip(metodoData, titleElement) {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.remove();
+                    currentMetodoTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'metodo-tooltip';
+                tooltip.innerHTML = `
+                    <div class="metodo-tooltip-header">
+                        <span class="metodo-tooltip-icon">${metodoData.icono}</span>
+                        <h3>${metodoData.titulo}</h3>
+                    </div>
+                    <div class="metodo-tooltip-description">
+                        ${metodoData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentMetodoTooltip = tooltip;
+
+                const rect = titleElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeMetodoTooltip() {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentMetodoTooltip) {
+                            currentMetodoTooltip.remove();
+                            currentMetodoTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Función para tooltips de métodos
+            function initializeMetodoTooltips() {
+                const metodoTitulos = document.querySelectorAll('.metodo-titulo');
+
+                metodoTitulos.forEach(titulo => {
+                    const metodoType = titulo.getAttribute('data-metodo');
+                    const metodoData = metodoDefinitions[metodoType];
+
+                    if (metodoData) {
+                        titulo.style.cursor = 'pointer';
+                        titulo.style.color = '#2563eb';
+                        titulo.style.fontWeight = '700';
+                        titulo.style.transition = 'color 0.2s ease, transform 0.2s ease';
+                        titulo.style.display = 'inline-block';
+                        titulo.style.borderBottom = '2px solid transparent';
+                        titulo.style.paddingBottom = '2px';
+
+                        titulo.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                this.style.color = '#1d4ed8';
+                                this.style.transform = 'translateY(-1px)';
+                                this.style.borderBottomColor = '#2563eb';
+                                createMetodoTooltip(metodoData, this);
+                            }
+                        });
+
+                        titulo.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                this.style.color = '#2563eb';
+                                this.style.transform = 'translateY(0)';
+                                this.style.borderBottomColor = 'transparent';
+                                closeMetodoTooltip();
+                            }
+                        });
+
+                        titulo.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentMetodoTooltip && currentMetodoTooltip.classList.contains('active')) {
+                                    closeMetodoTooltip();
+                                } else {
+                                    createMetodoTooltip(metodoData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Cerrar tooltips al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (currentFiguraTooltip && !currentFiguraTooltip.contains(e.target) && !e.target.classList.contains('figura-reference') && !e.target.classList.contains('conclusion-image')) {
+                    closeFiguraTooltip();
+                }
+                if (currentMetodoTooltip && !currentMetodoTooltip.contains(e.target) && !e.target.classList.contains('metodo-titulo')) {
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Cerrar tooltips con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (currentFiguraTooltip) closeFiguraTooltip();
+                    if (currentMetodoTooltip) closeMetodoTooltip();
+                }
+            });
+
+            // Sistema de toggle para códigos
+            const codeToggleBtn = document.getElementById('code-toggle');
+            const codeContent = document.getElementById('code-content');
+
+            if (codeToggleBtn && codeContent) {
+                // Asegurar que el contenido esté oculto por defecto
+                codeContent.style.maxHeight = '0';
+                codeContent.style.opacity = '0';
+                codeContent.style.overflow = 'hidden';
+                codeContent.style.padding = '0';
+                codeContent.style.margin = '0';
+
+                codeToggleBtn.addEventListener('click', function() {
+                    const isVisible = codeContent.classList.contains('active');
+
+                    if (isVisible) {
+                        // Ocultar
+                        codeContent.classList.remove('active');
+                        codeContent.style.maxHeight = '0';
+                        codeContent.style.opacity = '0';
+                        codeContent.style.padding = '0';
+                        codeContent.style.margin = '0';
+                        this.classList.remove('active');
+                    } else {
+                        // Mostrar
+                        codeContent.classList.add('active');
+                        codeContent.style.maxHeight = '10000px';
+                        codeContent.style.opacity = '1';
+                        codeContent.style.padding = '2rem';
+                        codeContent.style.margin = '0';
+                        this.classList.add('active');
+                    }
+                });
+            }
+
+            // Función para crear tooltip de figuras
+            function createFiguraTooltip(figuraData, referenceElement) {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.remove();
+                    currentFiguraTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'figura-tooltip';
+                tooltip.innerHTML = `
+                    <div class="figura-tooltip-header">
+                        <h3>${figuraData.titulo}</h3>
+                    </div>
+                    <img src="${figuraData.imagen}" alt="${figuraData.titulo}" class="figura-tooltip-image">
+                    <div class="figura-tooltip-description">
+                        ${figuraData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentFiguraTooltip = tooltip;
+
+                const rect = referenceElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+                
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+                
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeFiguraTooltip() {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentFiguraTooltip) {
+                            currentFiguraTooltip.remove();
+                            currentFiguraTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Inicializar tooltips para imágenes de conclusiones
+            function initializeConclusionImageTooltips() {
+                const conclusionImages = document.querySelectorAll('.conclusion-image');
+                
+                conclusionImages.forEach(image => {
+                    const title = image.getAttribute('data-title');
+                    const description = image.getAttribute('data-description');
+                    const imageSrc = image.getAttribute('src');
+                    
+                    if (title && description) {
+                        const figuraData = {
+                            titulo: title,
+                            imagen: imageSrc,
+                            descripcion: description
+                        };
+                        
+                        // Hover para desktop
+                        image.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                createFiguraTooltip(figuraData, this);
+                            }
+                        });
+                        
+                        image.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                closeFiguraTooltip();
+                            }
+                        });
+                        
+                        // Click para móviles
+                        image.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentFiguraTooltip && currentFiguraTooltip.classList.contains('active')) {
+                                    closeFiguraTooltip();
+                                } else {
+                                    createFiguraTooltip(figuraData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Inicializar tooltips de imágenes de conclusiones
+            initializeConclusionImageTooltips();
+
+            // Función para crear tooltip de métodos
+            function createMetodoTooltip(metodoData, titleElement) {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.remove();
+                    currentMetodoTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'metodo-tooltip';
+                tooltip.innerHTML = `
+                    <div class="metodo-tooltip-header">
+                        <span class="metodo-tooltip-icon">${metodoData.icono}</span>
+                        <h3>${metodoData.titulo}</h3>
+                    </div>
+                    <div class="metodo-tooltip-description">
+                        ${metodoData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentMetodoTooltip = tooltip;
+
+                const rect = titleElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeMetodoTooltip() {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentMetodoTooltip) {
+                            currentMetodoTooltip.remove();
+                            currentMetodoTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Cerrar tooltips al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (currentFiguraTooltip && !currentFiguraTooltip.contains(e.target) && !e.target.classList.contains('figura-reference') && !e.target.classList.contains('conclusion-image')) {
+                    closeFiguraTooltip();
+                }
+                if (currentMetodoTooltip && !currentMetodoTooltip.contains(e.target) && !e.target.classList.contains('metodo-titulo')) {
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Cerrar tooltips con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeFiguraTooltip();
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Inicializar funciones
+            initializeFiguraReferences();
+            initializeMetodoTooltips();
+
+            // Definiciones de secciones con resúmenes
+            const sectionSummaries = {
+                'antecedentes': [
+                'Vacío de información desde Oromi et al. (2002)',
+                'Sesgo en investigación hacia vertebrados',
+                'Vulnerabilidad y endemicidad de ecosistemas insulares de alta montaña'
+            ],
+            'objetivos': [
+                'Comparar TD, PD y FD entre 1995 y 2024',
+                'Calcular βTD, βPD y βFD para 1995 y 2024'
+            ],
+            'metodos': [
+                'Modelado estadístico en Rstudio',
+                'Análisis de secuencias genómicas en Geneious',
+                'Machine Learning (Random Forest) para calibrar la matriz de rasgos funcionales'
+            ],
+            'resultados': [
+                'Pérdida significativa de riqueza de especies',
+                'Diversidad filogenética estable',
+                'Diversidad funcional sin cambios significativos',
+                'Alta tasa de reemplazamiento de especies'
+            ],
+            'discusion': [
+                'Interpretación de cambios en diversidad',
+                'Factores ambientales y temporales',
+                'Implicaciones para la conservación'
+            ],
+            'conclusiones': [
+                {
+                    texto: 'Disminución de riqueza de especies entre 1995 y 2024',
+                    graficos: [
+                        {
+                            src: '../imagenes/curvas.jpeg',
+                            titulo: 'Curvas de acumulación de especies',
+                            descripcion: 'Comparación de las curvas de acumulación de especies entre 1995 y 2024. Las curvas muestran la riqueza acumulada de especies en función del número de localidades muestreadas, permitiendo evaluar la completitud del muestreo y comparar la diversidad entre ambos períodos.'
+                        },
+                        {
+                            src: '../imagenes/venn_figura10.jpeg',
+                            titulo: 'Diagrama de Venn - Figura 10',
+                            descripcion: 'Diagrama de Venn mostrando la superposición de especies entre los diferentes tipos de diversidad (taxonómica, filogenética y funcional) y entre los años de estudio (1995 y 2024).'
+                        }
+                    ]
+                },
+                {
+                    texto: 'Homogeneización taxonómica: pérdida de las diferencias taxonómicas que caracterizaban cada localidad',
+                    grafico: '../imagenes/NMDSbueno.jpeg'
+                },
+                {
+                    texto: 'Pérdida de especies epiedáficas con menor capacidad de dispersión'
+                },
+                {
+                    texto: 'Nuevos registros de especies nativas'
+                },
+                {
+                    texto: 'Transición hacia agrupamiento filogenético/funcional'
+                },
+                {
+                    texto: 'Redundancia funcional amortigua cambios en FD'
+                }
+            ],
+                'referencias': [
+                    'Bibliografía completa del estudio',
+                    'Referencias clave sobre defaunación',
+                    'Metodologías de análisis multidimensional'
+                ]
+            };
+
+            // Sistema de navegación con cuadros de síntesis
+            const navButtons = document.querySelectorAll('.nav-section-btn');
+            const summaryContainer = document.getElementById('summary-boxes-container');
+            let currentBoxes = [];
+
+            // Crear y mostrar cuadros de síntesis
+            function showSummaryBoxes(sectionId) {
+                // Limpiar cuadros anteriores
+                clearSummaryBoxes();
+                
+                const summaries = sectionSummaries[sectionId];
+                if (!summaries) return;
+
+                // Crear cuadros con animación escalonada
+                summaries.forEach((summary, index) => {
+                    setTimeout(() => {
+                        const box = document.createElement('div');
+                        box.className = 'summary-box';
+                        box.style.opacity = '0';
+                        box.style.transform = 'translateY(20px)';
+                        
+                        // Manejar objetos con texto y gráficos
+                        if (typeof summary === 'object' && summary.texto) {
+                            box.textContent = summary.texto;
+                        } else {
+                            box.textContent = summary;
+                        }
+                        
+                        summaryContainer.appendChild(box);
+                        currentBoxes.push(box);
+                        
+                        // Animar entrada
+                        setTimeout(() => {
+                            box.style.opacity = '1';
+                            box.style.transform = 'translateY(0)';
+                        }, 10);
+                    }, index * 100); // Delay escalonado
+                });
+
+                // Mostrar contenedor
+                summaryContainer.classList.add('active');
+            }
+
+            // Limpiar cuadros
+            function clearSummaryBoxes() {
+                currentBoxes.forEach(box => {
+                    box.style.opacity = '0';
+                    box.style.transform = 'translateY(-20px)';
+                    setTimeout(() => box.remove(), 300);
+                });
+                currentBoxes = [];
+                summaryContainer.classList.remove('active');
+            }
+
+            // Abrir síntesis al hacer clic en un botón
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSummaryBoxes(sectionId);
+                });
+            });
+
+            // Cerrar al hacer clic fuera o en el contenedor
+            if (summaryContainer) {
+                summaryContainer.addEventListener('click', function(e) {
+                    if (e.target === summaryContainer) {
+                        clearSummaryBoxes();
+                    }
+                });
+            }
+
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && summaryContainer && summaryContainer.classList.contains('active')) {
+                    clearSummaryBoxes();
+                }
+            });
+
+        // Definiciones de TD, PD y FD
+        const diversityDefinitions = {
+            'TD': {
+                title: 'Diversidad Taxonómica (TD)',
+                description: 'Mide la riqueza y composición de especies en una comunidad. Se basa en el número de especies presentes y su abundancia relativa, proporcionando una visión clásica de la biodiversidad.'
+            },
+            'PD': {
+                title: 'Diversidad Filogenética (PD)',
+                description: 'Evalúa las relaciones evolutivas entre las especies mediante la reconstrucción de árboles filogenéticos. Mide la diversidad considerando la historia evolutiva compartida, lo que permite identificar si las especies perdidas están relacionadas evolutivamente o son independientes.'
+            },
+            'FD': {
+                title: 'Diversidad Funcional (FD)',
+                description: 'Analiza los rasgos funcionales y roles ecológicos de las especies (características morfológicas, ecológicas y comportamentales). Evalúa cómo los cambios en la composición de especies afectan el funcionamiento del ecosistema y la provisión de servicios ecosistémicos.'
+            }
+        };
+
+        // Sistema de tooltips para TD, PD y FD
+        const diversityTerms = document.querySelectorAll('.diversity-term');
+        let currentTooltip = null;
+
+        diversityTerms.forEach(term => {
+            term.style.cursor = 'pointer';
+            term.style.color = '#4A90E2';
+            term.style.textDecoration = 'underline';
+            term.style.textDecorationStyle = 'dotted';
+            term.style.fontWeight = '700';
+            term.style.transition = 'color 0.2s';
+
+            term.addEventListener('mouseenter', function() {
+                this.style.color = '#2a6bb8';
+            });
+
+            term.addEventListener('mouseleave', function() {
+                this.style.color = '#4A90E2';
+            });
+
+            term.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const termType = this.getAttribute('data-term');
+                const definition = diversityDefinitions[termType];
+                
+                if (definition) {
+                    // Cerrar tooltip anterior si existe
+                    if (currentTooltip) {
+                        currentTooltip.remove();
+                    }
+
+                    // Crear tooltip
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'diversity-tooltip';
+                    tooltip.innerHTML = `
+                        <div class="tooltip-header">
+                            <h3>${definition.title}</h3>
+                            <button class="tooltip-close">&times;</button>
+                        </div>
+                        <p>${definition.description}</p>
+                    `;
+                    
+                    document.body.appendChild(tooltip);
+                    currentTooltip = tooltip;
+
+                    // Posicionar tooltip cerca del término
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.top = (rect.bottom + 10) + 'px';
+                    tooltip.style.left = Math.max(20, rect.left - 100) + 'px';
+
+                    // Animar entrada
+                    setTimeout(() => {
+                        tooltip.style.opacity = '1';
+                        tooltip.style.transform = 'translateY(0)';
+                    }, 10);
+
+                    // Cerrar tooltip
+                    const closeBtn = tooltip.querySelector('.tooltip-close');
+                    closeBtn.addEventListener('click', function() {
+                        tooltip.style.opacity = '0';
+                        tooltip.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            tooltip.remove();
+                            currentTooltip = null;
+                        }, 300);
+                    });
+
+                    // Cerrar al hacer clic fuera
+                    document.addEventListener('click', function closeTooltip(e) {
+                        if (!tooltip.contains(e.target) && !term.contains(e.target)) {
+                            tooltip.style.opacity = '0';
+                            tooltip.style.transform = 'translateY(-10px)';
+                            setTimeout(() => {
+                                tooltip.remove();
+                                currentTooltip = null;
+                            }, 300);
+                            document.removeEventListener('click', closeTooltip);
+                        }
+                    });
+                }
+            });
+            });
+
+            // Sistema de acordeón para los códigos
+            const codeAccordionHeaders = document.querySelectorAll('.code-accordion-header');
+            
+            codeAccordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const content = document.getElementById(`code-${targetId}`);
+                    const icon = this.querySelector('.code-accordion-icon');
+                    const accordionItem = this.closest('.code-accordion-item');
+                    
+                    if (content && icon && accordionItem) {
+                        // Toggle del contenido
+                        if (content.classList.contains('active')) {
+                            // Cerrar
+                            content.classList.remove('active');
+                            accordionItem.classList.remove('active');
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            // Abrir
+                            content.classList.add('active');
+                            accordionItem.classList.add('active');
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+
+            // Definiciones de métodos computacionales
+            const metodoDefinitions = {
+            'qgis': {
+                titulo: 'QGIS - Sistemas de Información Geográfica',
+                descripcion: 'Herramienta especializada en análisis espacial y cartografía digital. Utilizada para la visualización geoespacial de datos de biodiversidad, análisis de patrones de distribución y creación de mapas temáticos que integran información ambiental con datos de diversidad biológica.',
+                icono: '🗺️'
+            },
+            'geneious': {
+                titulo: 'Geneious - Plataforma Bioinformática',
+                descripcion: 'Suite integrada para análisis de secuencias genómicas y genómicas. Empleada para el procesamiento de datos de secuenciación masiva (NGS), alineamiento de secuencias, identificación molecular de especies mediante análisis filogenético y preparación de datos para reconstrucción de árboles evolutivos.',
+                icono: '🧬'
+            },
+            'filogenetica': {
+                titulo: 'Inferencia Filogenética Computacional',
+                descripcion: 'Análisis computacional avanzado para reconstruir relaciones evolutivas. Utiliza algoritmos de máxima verosimilitud (RAxML) y métodos bayesianos para generar árboles filogenéticos robustos basados en datos moleculares, fundamentales para el cálculo de diversidad filogenética.',
+                icono: '🌳'
+            },
+            'randomforest': {
+                titulo: 'Random Forest - Machine Learning',
+                descripcion: '<a href="./TFM/ESCRITO_NMJL.pdf#page=24" target="_blank" class="pdf-link-highlight">Algoritmo de aprendizaje automático</a> no supervisado para ponderación de rasgos funcionales. Este método de ensemble learning evalúa la importancia relativa de características morfológicas, ecológicas y comportamentales, optimizando la construcción de espacios funcionales multidimensionales.',
+                icono: '🤖'
+            },
+            'diversidad': {
+                titulo: 'Bioestadística Multidimensional',
+                descripcion: 'Análisis estadístico integrado de múltiples facetas de la biodiversidad. Combina índices taxonómicos, filogenéticos y funcionales mediante técnicas estadísticas avanzadas, permitiendo una evaluación comprehensiva de los cambios en la estructura de comunidades biológicas.',
+                icono: '📊'
+            },
+            'modelado': {
+                titulo: 'Modelado Estadístico Avanzado en R',
+                descripcion: 'Entorno computacional R con librerías especializadas para análisis ecológico. Incluye modelos lineales generalizados (GLM), análisis de varianza (ANOVA), modelos mixtos, validación de supuestos estadísticos (DHARMa) y técnicas de ordenación multivariante (NMDS, PCA).',
+                icono: '📈'
+            },
+            'beta': {
+                titulo: 'Análisis de Beta Diversidad',
+                descripcion: 'Métricas estadísticas para cuantificar la variación de composición de comunidades entre sitios y tiempos. Utiliza índices de similitud (Jaccard, Sørensen) y técnicas de partición para descomponer la diversidad beta en componentes de anidamiento y reemplazamiento, revelando patrones de homogeneización biótica.',
+                icono: '🔄'
+            }
+        };
+
+        // Inicializar al cargar la página y cuando se muestre contenido
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFiguraReferences();
+            initializeMetodoTooltips();
+        });
+
+            // Sistema de toggle para sección de conclusiones
+            const conclusionesToggle = document.getElementById('conclusiones-toggle');
+            const conclusionesContent = document.getElementById('conclusiones-content');
+            const conclusionesIcon = document.querySelector('.conclusiones-icon');
+
+            if (conclusionesToggle && conclusionesContent && conclusionesIcon) {
+                let conclusionesExpanded = false;
+
+                // Inicializar estado colapsado
+                conclusionesContent.style.maxHeight = '0';
+                conclusionesContent.style.overflow = 'hidden';
+                conclusionesContent.style.transition = 'max-height 0.4s ease, opacity 0.4s ease';
+                conclusionesContent.style.opacity = '0';
+
+                conclusionesToggle.addEventListener('click', function() {
+                    conclusionesExpanded = !conclusionesExpanded;
+
+                    if (conclusionesExpanded) {
+                        conclusionesContent.style.maxHeight = '2000px';
+                        conclusionesContent.style.opacity = '1';
+                        conclusionesIcon.style.transform = 'rotate(180deg)';
+                        conclusionesToggle.classList.add('active');
+                    } else {
+                        conclusionesContent.style.maxHeight = '0';
+                        conclusionesContent.style.opacity = '0';
+                        conclusionesIcon.style.transform = 'rotate(0deg)';
+                        conclusionesToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            // Re-inicializar referencias cuando se muestre contenido dinámicamente
+            // (útil si el contenido se carga después del DOMContentLoaded)
+            setTimeout(function() {
+                initializeFiguraReferences();
+                initializeMetodoTooltips();
+                initializeConclusionImageTooltips();
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+

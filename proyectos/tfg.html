@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variación temporal 2004-2020 en las capturas de salmón atlántico en Asturias</title>
+    <link rel="stylesheet" href="../styles.css?v=37">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+    <!-- Header Image with Title Overlay - Full Width -->
+    <div id="header-image" class="header-image-with-title header-full-width">
+        <img src="../imagenes/salmones.jpg" alt="Salmón atlántico en ríos de Asturias">
+        <div class="header-title-overlay">
+            <h1>Variación temporal 2004-2020 en las capturas de salmón atlántico en Asturias: cambios en rasgos de la estrategia vital</h1>
+        </div>
+    </div>
+
+    <!-- PDF Download Link Above Navigation -->
+    <div class="pdf-above-nav">
+        <a href="./TFG/TFG.pdf" class="pdf-download-link" target="_blank" rel="noopener noreferrer">
+            <img src="../imagenes/pdf.png" alt="Descargar PDF del TFG" class="pdf-icon">
+        </a>
+    </div>
+
+    <!-- Navigation Sections Horizontal -->
+    <div class="nav-sections-horizontal">
+        <button class="nav-section-btn" data-section="antecedentes">
+            <img src="../imagenes/libro.png" alt="Antecedentes" class="nav-icon">
+            <span>Antecedentes</span>
+        </button>
+        <button class="nav-section-btn" data-section="objetivos">
+            <img src="../imagenes/diana.png" alt="Objetivos" class="nav-icon">
+            <span>Objetivos</span>
+        </button>
+        <button class="nav-section-btn nav-section-btn-image" data-section="metodos">
+            <img src="../imagenes/excel.png" alt="Análisis Computacional">
+            <span>Análisis Computacional</span>
+        </button>
+    </div>
+
+
+    <!-- Navigation Sections Bottom (temporalmente ocultos) -->
+    <div class="nav-sections-bottom" style="display: none;">
+        <button class="nav-section-btn" data-section="resultados">
+            <i class="bi bi-graph-up"></i>
+            <span>Resultados</span>
+        </button>
+        <button class="nav-section-btn" data-section="discusion">
+            <i class="bi bi-chat-dots"></i>
+            <span>Discusión</span>
+        </button>
+        <button class="nav-section-btn" data-section="conclusiones">
+            <i class="bi bi-check-circle"></i>
+            <span>Conclusiones</span>
+        </button>
+        <button class="nav-section-btn" data-section="referencias">
+            <i class="bi bi-file-text"></i>
+            <span>Referencias</span>
+        </button>
+    </div>
+
+    <!-- Content Modal -->
+    <div id="content-modal" class="content-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div id="modal-body">
+                <!-- El contenido se carga aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Boxes Container -->
+    <div id="summary-boxes-container" class="summary-boxes-container"></div>
+
+    <!-- Conclusiones Section -->
+    <div class="conclusiones-section">
+        <div class="conclusiones-header" id="conclusiones-toggle">
+            <h2>Conclusiones</h2>
+            <div class="conclusiones-line"></div>
+            <i class="bi bi-chevron-down conclusiones-icon"></i>
+        </div>
+        <div class="conclusiones-content" id="conclusiones-content">
+            <ul class="conclusiones-list">
+                <li>
+                    <div class="conclusion-text">La población asturiana sufre un marcado descenso desde 1949, acelerado desde 2004</div>
+                </li>
+                <li>
+                    <div class="conclusion-text">La población asturiana está cercana al colapso</div>
+                </li>
+                <li>
+                    <div class="conclusion-text">No se aprecian descensos en el tamaño (peso ni longitud) ni en la condición a lo largo de la serie temporal</div>
+                </li>
+                <li>
+                    <div class="conclusion-text">La gestión de la pesca deportiva podría explicar el descenso más acusado del número de salmones multi-invierno</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección final con fondo -->
+    <div class="final-section-wrapper">
+        <div class="vias-desarrollo-content">
+            <div class="vias-desarrollo-accordion-wrapper">
+                <button class="code-toggle-btn" id="vias-toggle" style="background: transparent; border: none; width: 100%;">
+                    <h2 style="margin: 0; font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 4px 15px rgba(0,0,0,0.6); text-align: center;">Propuestas de Análisis Futuro</h2>
+                    <i class="bi bi-chevron-down code-toggle-icon" style="color: #ffffff;"></i>
+                </button>
+
+                <div class="code-content-container" id="vias-content" style="background: rgba(255, 255, 255, 0.98); margin-top: 2rem;">
+                    <div class="code-accordion" style="width: 100%; max-width: 100%;">
+                        <div class="code-accordion-item">
+                            <button class="code-accordion-header" data-target="vias1">
+                                <div class="code-accordion-content">
+                                    <span class="code-accordion-emoji">💧</span>
+                                    <span class="code-accordion-title">Correlación entre el caudal estival y la supervivencia de alevines</span>
+                                </div>
+                                <i class="bi bi-chevron-down code-accordion-icon"></i>
+                            </button>
+                            <div id="code-vias1" class="code-content">
+                                <p>Análisis que explorará la relación entre los caudales estivales de los ríos asturianos y las tasas de supervivencia de los alevines de salmón. Se utilizarán datos hidrológicos históricos y registros de retorno de adultos para identificar umbrales críticos de caudal que afecten el éxito reproductivo.</p>
+                            </div>
+                        </div>
+                        <div class="code-accordion-item">
+                            <button class="code-accordion-header" data-target="vias2">
+                                <div class="code-accordion-content">
+                                    <span class="code-accordion-emoji">🌡️</span>
+                                    <span class="code-accordion-title">Modelado de la influencia del aumento de temperatura en el retorno de adultos</span>
+                                </div>
+                                <i class="bi bi-chevron-down code-accordion-icon"></i>
+                            </button>
+                            <div id="code-vias2" class="code-content">
+                                <p>Modelo predictivo que evaluará cómo el incremento de la temperatura del agua, tanto en ríos como en el mar, afecta las tasas de retorno de salmones adultos. Se integrarán proyecciones climáticas con datos históricos de capturas para predecir tendencias futuras.</p>
+                            </div>
+                        </div>
+                        <div class="code-accordion-item">
+                            <button class="code-accordion-header" data-target="vias3">
+                                <div class="code-accordion-content">
+                                    <span class="code-accordion-emoji">📊</span>
+                                    <span class="code-accordion-title">Comparativa de la CPUE (Captura por Unidad de Esfuerzo) entre cuencas fluviales</span>
+                                </div>
+                                <i class="bi bi-chevron-down code-accordion-icon"></i>
+                            </button>
+                            <div id="code-vias3" class="code-content">
+                                <p>Estudio comparativo que analizará las diferencias en la eficiencia de captura entre las diferentes cuencas fluviales asturianas. Este análisis permitirá identificar cuencas con mayor presión pesquera y evaluar la efectividad de las medidas de gestión implementadas en cada una.</p>
+                            </div>
+                        </div>
+                        <div class="code-accordion-item">
+                            <button class="code-accordion-header" data-target="vias4">
+                                <div class="code-accordion-content">
+                                    <span class="code-accordion-emoji">🔬</span>
+                                    <span class="code-accordion-title">Análisis de la relación entre tamaño corporal y condición física en diferentes clases de edad</span>
+                                </div>
+                                <i class="bi bi-chevron-down code-accordion-icon"></i>
+                            </button>
+                            <div id="code-vias4" class="code-content">
+                                <p>Investigación que examinará cómo varía la condición física (índices de condición corporal) entre salmones añales y multi-invierno a lo largo del tiempo. Este análisis ayudará a entender si los cambios en la estructura poblacional están relacionados con alteraciones en la condición nutricional de los individuos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables globales para tooltips
+            let currentFiguraTooltip = null;
+            let currentMetodoTooltip = null;
+
+            // Definiciones de figuras
+            const figuraDefinitions = {
+                '1': {
+                    titulo: 'Figura 1: Curvas de acumulación de especies',
+                    imagen: '../imagenes/curvas.jpeg',
+                    descripcion: 'Comparación de las curvas de acumulación de especies entre 1995 y 2024. Las curvas muestran la riqueza acumulada de especies en función del número de localidades muestreadas, permitiendo evaluar la completitud del muestreo y comparar la diversidad entre ambos períodos. Se observa una disminución significativa en la riqueza acumulada en 2024 comparado con 1995.'
+                },
+                '2': {
+                    titulo: 'Figura 2: Análisis NMDS de comunidades',
+                    imagen: '../imagenes/NMDSbueno.jpeg',
+                    descripcion: 'Análisis de ordenación no métrica multidimensional (NMDS) mostrando la similitud entre las comunidades de arañas de diferentes localidades en 1995 y 2024. Los polígonos representan el espacio ocupado por cada año de muestreo. La reducción en la dispersión de los puntos y la superposición de polígonos entre años ilustra el proceso de homogeneización taxonómica, donde las comunidades de diferentes localidades se han vuelto más similares entre sí.'
+                },
+                '10': {
+                    titulo: 'Figura 10: Diagrama de Venn',
+                    imagen: '../imagenes/venn_figura10.jpeg',
+                    descripcion: 'Diagrama de Venn mostrando la superposición de especies entre los diferentes tipos de diversidad (taxonómica, filogenética y funcional) y entre los años de estudio (1995 y 2024). Este diagrama permite visualizar las relaciones y solapamientos entre las diferentes dimensiones de la diversidad.'
+                }
+            };
+
+            // Funciones para tooltips de figuras
+            function createFiguraTooltip(figuraData, referenceElement) {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.remove();
+                    currentFiguraTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'figura-tooltip';
+                tooltip.innerHTML = `
+                    <div class="figura-tooltip-header">
+                        <h3>${figuraData.titulo}</h3>
+                    </div>
+                    <img src="${figuraData.imagen}" alt="${figuraData.titulo}" class="figura-tooltip-image">
+                    <div class="figura-tooltip-description">
+                        ${figuraData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentFiguraTooltip = tooltip;
+
+                const rect = referenceElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+                
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+                
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeFiguraTooltip() {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentFiguraTooltip) {
+                            currentFiguraTooltip.remove();
+                            currentFiguraTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Función para referencias de figuras
+            function initializeFiguraReferences() {
+                const figuraReferences = document.querySelectorAll('.figura-reference');
+
+                figuraReferences.forEach(reference => {
+                    const figuraNum = reference.getAttribute('data-figura');
+                    const figuraData = figuraDefinitions[figuraNum];
+
+                    if (figuraData) {
+                        reference.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                createFiguraTooltip(figuraData, this);
+                            }
+                        });
+
+                        reference.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                closeFiguraTooltip();
+                            }
+                        });
+
+                        reference.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentFiguraTooltip && currentFiguraTooltip.classList.contains('active')) {
+                                    closeFiguraTooltip();
+                                } else {
+                                    createFiguraTooltip(figuraData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Funciones para tooltips de métodos
+            function createMetodoTooltip(metodoData, titleElement) {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.remove();
+                    currentMetodoTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'metodo-tooltip';
+                tooltip.innerHTML = `
+                    <div class="metodo-tooltip-header">
+                        <span class="metodo-tooltip-icon">${metodoData.icono}</span>
+                        <h3>${metodoData.titulo}</h3>
+                    </div>
+                    <div class="metodo-tooltip-description">
+                        ${metodoData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentMetodoTooltip = tooltip;
+
+                const rect = titleElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeMetodoTooltip() {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentMetodoTooltip) {
+                            currentMetodoTooltip.remove();
+                            currentMetodoTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Función para tooltips de métodos
+            function initializeMetodoTooltips() {
+                const metodoTitulos = document.querySelectorAll('.metodo-titulo');
+
+                metodoTitulos.forEach(titulo => {
+                    const metodoType = titulo.getAttribute('data-metodo');
+                    const metodoData = metodoDefinitions[metodoType];
+
+                    if (metodoData) {
+                        titulo.style.cursor = 'pointer';
+                        titulo.style.color = '#2563eb';
+                        titulo.style.fontWeight = '700';
+                        titulo.style.transition = 'color 0.2s ease, transform 0.2s ease';
+                        titulo.style.display = 'inline-block';
+                        titulo.style.borderBottom = '2px solid transparent';
+                        titulo.style.paddingBottom = '2px';
+
+                        titulo.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                this.style.color = '#1d4ed8';
+                                this.style.transform = 'translateY(-1px)';
+                                this.style.borderBottomColor = '#2563eb';
+                                createMetodoTooltip(metodoData, this);
+                            }
+                        });
+
+                        titulo.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                this.style.color = '#2563eb';
+                                this.style.transform = 'translateY(0)';
+                                this.style.borderBottomColor = 'transparent';
+                                closeMetodoTooltip();
+                            }
+                        });
+
+                        titulo.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentMetodoTooltip && currentMetodoTooltip.classList.contains('active')) {
+                                    closeMetodoTooltip();
+                                } else {
+                                    createMetodoTooltip(metodoData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Cerrar tooltips al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (currentFiguraTooltip && !currentFiguraTooltip.contains(e.target) && !e.target.classList.contains('figura-reference') && !e.target.classList.contains('conclusion-image')) {
+                    closeFiguraTooltip();
+                }
+                if (currentMetodoTooltip && !currentMetodoTooltip.contains(e.target) && !e.target.classList.contains('metodo-titulo')) {
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Cerrar tooltips con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (currentFiguraTooltip) closeFiguraTooltip();
+                    if (currentMetodoTooltip) closeMetodoTooltip();
+                }
+            });
+
+            // Sistema de toggle para códigos
+            const codeToggleBtn = document.getElementById('code-toggle');
+            const codeContent = document.getElementById('code-content');
+
+            if (codeToggleBtn && codeContent) {
+                // Asegurar que el contenido esté oculto por defecto
+                codeContent.style.maxHeight = '0';
+                codeContent.style.opacity = '0';
+                codeContent.style.overflow = 'hidden';
+                codeContent.style.padding = '0';
+                codeContent.style.margin = '0';
+
+                codeToggleBtn.addEventListener('click', function() {
+                    const isVisible = codeContent.classList.contains('active');
+
+                    if (isVisible) {
+                        // Ocultar
+                        codeContent.classList.remove('active');
+                        codeContent.style.maxHeight = '0';
+                        codeContent.style.opacity = '0';
+                        codeContent.style.padding = '0';
+                        codeContent.style.margin = '0';
+                        this.classList.remove('active');
+                    } else {
+                        // Mostrar
+                        codeContent.classList.add('active');
+                        codeContent.style.maxHeight = '10000px';
+                        codeContent.style.opacity = '1';
+                        codeContent.style.padding = '2rem';
+                        codeContent.style.margin = '0';
+                        this.classList.add('active');
+                    }
+                });
+            }
+
+            // Función para crear tooltip de figuras
+            function createFiguraTooltip(figuraData, referenceElement) {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.remove();
+                    currentFiguraTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'figura-tooltip';
+                tooltip.innerHTML = `
+                    <div class="figura-tooltip-header">
+                        <h3>${figuraData.titulo}</h3>
+                    </div>
+                    <img src="${figuraData.imagen}" alt="${figuraData.titulo}" class="figura-tooltip-image">
+                    <div class="figura-tooltip-description">
+                        ${figuraData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentFiguraTooltip = tooltip;
+
+                const rect = referenceElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+                
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+                
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeFiguraTooltip() {
+                if (currentFiguraTooltip) {
+                    currentFiguraTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentFiguraTooltip) {
+                            currentFiguraTooltip.remove();
+                            currentFiguraTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Inicializar tooltips para imágenes de conclusiones
+            function initializeConclusionImageTooltips() {
+                const conclusionImages = document.querySelectorAll('.conclusion-image');
+                
+                conclusionImages.forEach(image => {
+                    const title = image.getAttribute('data-title');
+                    const description = image.getAttribute('data-description');
+                    const imageSrc = image.getAttribute('src');
+                    
+                    if (title && description) {
+                        const figuraData = {
+                            titulo: title,
+                            imagen: imageSrc,
+                            descripcion: description
+                        };
+                        
+                        // Hover para desktop
+                        image.addEventListener('mouseenter', function() {
+                            if (window.innerWidth > 768) {
+                                createFiguraTooltip(figuraData, this);
+                            }
+                        });
+                        
+                        image.addEventListener('mouseleave', function() {
+                            if (window.innerWidth > 768) {
+                                closeFiguraTooltip();
+                            }
+                        });
+                        
+                        // Click para móviles
+                        image.addEventListener('click', function(e) {
+                            if (window.innerWidth <= 768) {
+                                e.stopPropagation();
+                                if (currentFiguraTooltip && currentFiguraTooltip.classList.contains('active')) {
+                                    closeFiguraTooltip();
+                                } else {
+                                    createFiguraTooltip(figuraData, this);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Inicializar tooltips de imágenes de conclusiones
+            initializeConclusionImageTooltips();
+
+            // Función para crear tooltip de métodos
+            function createMetodoTooltip(metodoData, titleElement) {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.remove();
+                    currentMetodoTooltip = null;
+                }
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'metodo-tooltip';
+                tooltip.innerHTML = `
+                    <div class="metodo-tooltip-header">
+                        <span class="metodo-tooltip-icon">${metodoData.icono}</span>
+                        <h3>${metodoData.titulo}</h3>
+                    </div>
+                    <div class="metodo-tooltip-description">
+                        ${metodoData.descripcion}
+                    </div>
+                `;
+
+                document.body.appendChild(tooltip);
+                currentMetodoTooltip = tooltip;
+
+                const rect = titleElement.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+
+                let left = rect.right + 20;
+                let top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 20;
+                }
+
+                if (top < 20) {
+                    top = 20;
+                } else if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+
+                setTimeout(() => {
+                    tooltip.classList.add('active');
+                }, 10);
+            }
+
+            function closeMetodoTooltip() {
+                if (currentMetodoTooltip) {
+                    currentMetodoTooltip.classList.remove('active');
+                    setTimeout(() => {
+                        if (currentMetodoTooltip) {
+                            currentMetodoTooltip.remove();
+                            currentMetodoTooltip = null;
+                        }
+                    }, 300);
+                }
+            }
+
+            // Cerrar tooltips al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (currentFiguraTooltip && !currentFiguraTooltip.contains(e.target) && !e.target.classList.contains('figura-reference') && !e.target.classList.contains('conclusion-image')) {
+                    closeFiguraTooltip();
+                }
+                if (currentMetodoTooltip && !currentMetodoTooltip.contains(e.target) && !e.target.classList.contains('metodo-titulo')) {
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Cerrar tooltips con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeFiguraTooltip();
+                    closeMetodoTooltip();
+                }
+            });
+
+            // Inicializar funciones
+            initializeFiguraReferences();
+            initializeMetodoTooltips();
+
+            // Definiciones de secciones con resúmenes
+            const sectionSummaries = {
+                'antecedentes': [
+                'Las pesquerías experimentan un acusado declive a nivel global desde mediados del siglo pasado',
+                'La población global de salmón atlántico (Salmo salar) sufre una reducción en toda su área de distribución',
+                'Estadísticas de pesca deportiva recopiladas por el Principado de Asturias entre 2004 y 2020',
+                'Se diferenciaron dos clases de tamaño: añales y multi-invierno'
+            ],
+            'objetivos': [
+                'Analizar la evolución del número de capturas',
+                'Analizar disminuciones en el tamaño y condición de los salmones',
+                'Estudiar la evolución del tamaño en cada clase (añales y multi-invierno)'
+            ],
+            'metodos': [
+                'Digitalización y limpieza de registros históricos',
+                'Estandarización de bases de datos de capturas (2004-2020)',
+                'Análisis exploratorio de datos y detección de outliers'
+            ],
+            'resultados': [
+                'Pérdida significativa de riqueza de especies',
+                'Diversidad filogenética estable',
+                'Diversidad funcional sin cambios significativos',
+                'Alta tasa de reemplazamiento de especies'
+            ],
+            'discusion': [
+                'Interpretación de cambios en diversidad',
+                'Factores ambientales y temporales',
+                'Implicaciones para la conservación'
+            ],
+            'conclusiones': [
+                {
+                    texto: 'La población asturiana sufre un marcado descenso desde 1949, acelerado desde 2004'
+                },
+                {
+                    texto: 'La población asturiana está cercana al colapso'
+                },
+                {
+                    texto: 'No se aprecian descensos en el tamaño (peso ni longitud) ni en la condición a lo largo de la serie temporal'
+                },
+                {
+                    texto: 'La gestión de la pesca deportiva podría explicar el descenso más acusado del número de salmones multi-invierno'
+                }
+            ],
+                'referencias': [
+                    'Bibliografía completa del estudio',
+                    'Referencias clave sobre defaunación',
+                    'Metodologías de análisis multidimensional'
+                ]
+            };
+
+            // Sistema de navegación con cuadros de síntesis
+            const navButtons = document.querySelectorAll('.nav-section-btn');
+            const summaryContainer = document.getElementById('summary-boxes-container');
+            let currentBoxes = [];
+
+            // Crear y mostrar cuadros de síntesis
+            function showSummaryBoxes(sectionId) {
+                // Limpiar cuadros anteriores
+                clearSummaryBoxes();
+                
+                const summaries = sectionSummaries[sectionId];
+                if (!summaries) return;
+
+                // Crear cuadros con animación escalonada
+                summaries.forEach((summary, index) => {
+                    setTimeout(() => {
+                        const box = document.createElement('div');
+                        box.className = 'summary-box';
+                        box.style.opacity = '0';
+                        box.style.transform = 'translateY(20px)';
+                        
+                        // Manejar objetos con texto y gráficos
+                        if (typeof summary === 'object' && summary.texto) {
+                            box.textContent = summary.texto;
+                        } else {
+                            box.textContent = summary;
+                        }
+                        
+                        summaryContainer.appendChild(box);
+                        currentBoxes.push(box);
+                        
+                        // Animar entrada
+                        setTimeout(() => {
+                            box.style.opacity = '1';
+                            box.style.transform = 'translateY(0)';
+                        }, 10);
+                    }, index * 100); // Delay escalonado
+                });
+
+                // Mostrar contenedor
+                summaryContainer.classList.add('active');
+            }
+
+            // Limpiar cuadros
+            function clearSummaryBoxes() {
+                currentBoxes.forEach(box => {
+                    box.style.opacity = '0';
+                    box.style.transform = 'translateY(-20px)';
+                    setTimeout(() => box.remove(), 300);
+                });
+                currentBoxes = [];
+                summaryContainer.classList.remove('active');
+            }
+
+            // Abrir síntesis al hacer clic en un botón
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSummaryBoxes(sectionId);
+                });
+            });
+
+            // Cerrar al hacer clic fuera o en el contenedor
+            if (summaryContainer) {
+                summaryContainer.addEventListener('click', function(e) {
+                    if (e.target === summaryContainer) {
+                        clearSummaryBoxes();
+                    }
+                });
+            }
+
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && summaryContainer && summaryContainer.classList.contains('active')) {
+                    clearSummaryBoxes();
+                }
+            });
+
+        // Definiciones de TD, PD y FD
+        const diversityDefinitions = {
+            'TD': {
+                title: 'Diversidad Taxonómica (TD)',
+                description: 'Mide la riqueza y composición de especies en una comunidad. Se basa en el número de especies presentes y su abundancia relativa, proporcionando una visión clásica de la biodiversidad.'
+            },
+            'PD': {
+                title: 'Diversidad Filogenética (PD)',
+                description: 'Evalúa las relaciones evolutivas entre las especies mediante la reconstrucción de árboles filogenéticos. Mide la diversidad considerando la historia evolutiva compartida, lo que permite identificar si las especies perdidas están relacionadas evolutivamente o son independientes.'
+            },
+            'FD': {
+                title: 'Diversidad Funcional (FD)',
+                description: 'Analiza los rasgos funcionales y roles ecológicos de las especies (características morfológicas, ecológicas y comportamentales). Evalúa cómo los cambios en la composición de especies afectan el funcionamiento del ecosistema y la provisión de servicios ecosistémicos.'
+            }
+        };
+
+        // Sistema de tooltips para TD, PD y FD
+        const diversityTerms = document.querySelectorAll('.diversity-term');
+        let currentTooltip = null;
+
+        diversityTerms.forEach(term => {
+            term.style.cursor = 'pointer';
+            term.style.color = '#4A90E2';
+            term.style.textDecoration = 'underline';
+            term.style.textDecorationStyle = 'dotted';
+            term.style.fontWeight = '700';
+            term.style.transition = 'color 0.2s';
+
+            term.addEventListener('mouseenter', function() {
+                this.style.color = '#2a6bb8';
+            });
+
+            term.addEventListener('mouseleave', function() {
+                this.style.color = '#4A90E2';
+            });
+
+            term.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const termType = this.getAttribute('data-term');
+                const definition = diversityDefinitions[termType];
+                
+                if (definition) {
+                    // Cerrar tooltip anterior si existe
+                    if (currentTooltip) {
+                        currentTooltip.remove();
+                    }
+
+                    // Crear tooltip
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'diversity-tooltip';
+                    tooltip.innerHTML = `
+                        <div class="tooltip-header">
+                            <h3>${definition.title}</h3>
+                            <button class="tooltip-close">&times;</button>
+                        </div>
+                        <p>${definition.description}</p>
+                    `;
+                    
+                    document.body.appendChild(tooltip);
+                    currentTooltip = tooltip;
+
+                    // Posicionar tooltip cerca del término
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.top = (rect.bottom + 10) + 'px';
+                    tooltip.style.left = Math.max(20, rect.left - 100) + 'px';
+
+                    // Animar entrada
+                    setTimeout(() => {
+                        tooltip.style.opacity = '1';
+                        tooltip.style.transform = 'translateY(0)';
+                    }, 10);
+
+                    // Cerrar tooltip
+                    const closeBtn = tooltip.querySelector('.tooltip-close');
+                    closeBtn.addEventListener('click', function() {
+                        tooltip.style.opacity = '0';
+                        tooltip.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            tooltip.remove();
+                            currentTooltip = null;
+                        }, 300);
+                    });
+
+                    // Cerrar al hacer clic fuera
+                    document.addEventListener('click', function closeTooltip(e) {
+                        if (!tooltip.contains(e.target) && !term.contains(e.target)) {
+                            tooltip.style.opacity = '0';
+                            tooltip.style.transform = 'translateY(-10px)';
+                            setTimeout(() => {
+                                tooltip.remove();
+                                currentTooltip = null;
+                            }, 300);
+                            document.removeEventListener('click', closeTooltip);
+                        }
+                    });
+                }
+            });
+            });
+
+            // Sistema de acordeón para los códigos
+            const codeAccordionHeaders = document.querySelectorAll('.code-accordion-header');
+            
+            codeAccordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const content = document.getElementById(`code-${targetId}`);
+                    const icon = this.querySelector('.code-accordion-icon');
+                    const accordionItem = this.closest('.code-accordion-item');
+                    
+                    if (content && icon && accordionItem) {
+                        // Toggle del contenido
+                        if (content.classList.contains('active')) {
+                            // Cerrar
+                            content.classList.remove('active');
+                            accordionItem.classList.remove('active');
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            // Abrir
+                            content.classList.add('active');
+                            accordionItem.classList.add('active');
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+
+            // Definiciones de métodos computacionales
+            const metodoDefinitions = {
+            'qgis': {
+                titulo: 'QGIS - Sistemas de Información Geográfica',
+                descripcion: 'Herramienta especializada en análisis espacial y cartografía digital. Utilizada para la visualización geoespacial de datos de biodiversidad, análisis de patrones de distribución y creación de mapas temáticos que integran información ambiental con datos de diversidad biológica.',
+                icono: '🗺️'
+            },
+            'geneious': {
+                titulo: 'Geneious - Plataforma Bioinformática',
+                descripcion: 'Suite integrada para análisis de secuencias genómicas y genómicas. Empleada para el procesamiento de datos de secuenciación masiva (NGS), alineamiento de secuencias, identificación molecular de especies mediante análisis filogenético y preparación de datos para reconstrucción de árboles evolutivos.',
+                icono: '🧬'
+            },
+            'filogenetica': {
+                titulo: 'Inferencia Filogenética Computacional',
+                descripcion: 'Análisis computacional avanzado para reconstruir relaciones evolutivas. Utiliza algoritmos de máxima verosimilitud (RAxML) y métodos bayesianos para generar árboles filogenéticos robustos basados en datos moleculares, fundamentales para el cálculo de diversidad filogenética.',
+                icono: '🌳'
+            },
+            'randomforest': {
+                titulo: 'Random Forest - Machine Learning',
+                descripcion: '<a href="./TFM/ESCRITO_NMJL.pdf#page=24" target="_blank" class="pdf-link-highlight">Algoritmo de aprendizaje automático</a> no supervisado para ponderación de rasgos funcionales. Este método de ensemble learning evalúa la importancia relativa de características morfológicas, ecológicas y comportamentales, optimizando la construcción de espacios funcionales multidimensionales.',
+                icono: '🤖'
+            },
+            'diversidad': {
+                titulo: 'Bioestadística Multidimensional',
+                descripcion: 'Análisis estadístico integrado de múltiples facetas de la biodiversidad. Combina índices taxonómicos, filogenéticos y funcionales mediante técnicas estadísticas avanzadas, permitiendo una evaluación comprehensiva de los cambios en la estructura de comunidades biológicas.',
+                icono: '📊'
+            },
+            'modelado': {
+                titulo: 'Modelado Estadístico Avanzado en R',
+                descripcion: 'Entorno computacional R con librerías especializadas para análisis ecológico. Incluye modelos lineales generalizados (GLM), análisis de varianza (ANOVA), modelos mixtos, validación de supuestos estadísticos (DHARMa) y técnicas de ordenación multivariante (NMDS, PCA).',
+                icono: '📈'
+            },
+            'beta': {
+                titulo: 'Análisis de Beta Diversidad',
+                descripcion: 'Métricas estadísticas para cuantificar la variación de composición de comunidades entre sitios y tiempos. Utiliza índices de similitud (Jaccard, Sørensen) y técnicas de partición para descomponer la diversidad beta en componentes de anidamiento y reemplazamiento, revelando patrones de homogeneización biótica.',
+                icono: '🔄'
+            }
+        };
+
+        // Inicializar al cargar la página y cuando se muestre contenido
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFiguraReferences();
+            initializeMetodoTooltips();
+        });
+
+            // Sistema de toggle para sección de conclusiones
+            const conclusionesToggle = document.getElementById('conclusiones-toggle');
+            const conclusionesContent = document.getElementById('conclusiones-content');
+            const conclusionesIcon = document.querySelector('.conclusiones-icon');
+
+            if (conclusionesToggle && conclusionesContent && conclusionesIcon) {
+                let conclusionesExpanded = false;
+
+                // Inicializar estado colapsado
+                conclusionesContent.style.maxHeight = '0';
+                conclusionesContent.style.overflow = 'hidden';
+                conclusionesContent.style.transition = 'max-height 0.4s ease, opacity 0.4s ease';
+                conclusionesContent.style.opacity = '0';
+
+                conclusionesToggle.addEventListener('click', function() {
+                    conclusionesExpanded = !conclusionesExpanded;
+
+                    if (conclusionesExpanded) {
+                        conclusionesContent.style.maxHeight = '2000px';
+                        conclusionesContent.style.opacity = '1';
+                        conclusionesIcon.style.transform = 'rotate(180deg)';
+                        conclusionesToggle.classList.add('active');
+                    } else {
+                        conclusionesContent.style.maxHeight = '0';
+                        conclusionesContent.style.opacity = '0';
+                        conclusionesIcon.style.transform = 'rotate(0deg)';
+                        conclusionesToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            // Sistema de toggle para sección de Vías de Desarrollo
+            const viasToggle = document.getElementById('vias-toggle');
+            const viasContent = document.getElementById('vias-content');
+            const viasIcon = viasToggle ? viasToggle.querySelector('.code-toggle-icon') : null;
+
+            if (viasToggle && viasContent && viasIcon) {
+                // Inicializar estado colapsado
+                viasContent.style.maxHeight = '0';
+                viasContent.style.opacity = '0';
+                viasContent.style.overflow = 'hidden';
+                viasContent.style.padding = '0';
+                viasContent.style.transition = 'max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease';
+
+                viasToggle.addEventListener('click', function() {
+                    const isVisible = viasContent.classList.contains('active');
+
+                    if (isVisible) {
+                        // Ocultar
+                        viasContent.classList.remove('active');
+                        viasContent.style.maxHeight = '0';
+                        viasContent.style.opacity = '0';
+                        viasContent.style.padding = '0';
+                        viasIcon.style.transform = 'rotate(0deg)';
+                        viasToggle.classList.remove('active');
+                    } else {
+                        // Mostrar
+                        viasContent.classList.add('active');
+                        viasContent.style.maxHeight = '10000px';
+                        viasContent.style.opacity = '1';
+                        viasContent.style.padding = '2rem';
+                        viasIcon.style.transform = 'rotate(180deg)';
+                        viasToggle.classList.add('active');
+                    }
+                });
+            }
+
+            // Re-inicializar referencias cuando se muestre contenido dinámicamente
+            // (útil si el contenido se carga después del DOMContentLoaded)
+            setTimeout(function() {
+                initializeFiguraReferences();
+                initializeMetodoTooltips();
+                initializeConclusionImageTooltips();
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+

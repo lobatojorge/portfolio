@@ -1,0 +1,56 @@
+# Valida que data/projects.json existe y es JSON válido en cada push/PR
+name: Validate projects.json
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'data/projects.json'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'data/projects.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate projects.json exists
+        run: |
+          if [ ! -f data/projects.json ]; then
+            echo "::error::data/projects.json no existe"
+            exit 1
+          fi
+
+      - name: Validate JSON syntax
+        run: |
+          if ! python3 -c "import json; json.load(open('data/projects.json'))"; then
+            echo "::error::data/projects.json no es JSON válido"
+            exit 1
+          fi
+          echo "JSON válido."
+
+      - name: Validate array structure
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          with open('data/projects.json') as f:
+            data = json.load(f)
+          if not isinstance(data, list):
+            print("::error::projects.json debe ser un array")
+            sys.exit(1)
+          required = {'id', 'title', 'image', 'url', 'external'}
+          for i, p in enumerate(data):
+            if not isinstance(p, dict):
+              print(f"::error::Proyecto {i} debe ser un objeto")
+              sys.exit(1)
+            missing = required - set(p.keys())
+            if missing:
+              print(f"::error::Proyecto {i} (id={p.get('id','?')}) le faltan: {missing}")
+              sys.exit(1)
+          print("Estructura correcta.")
+          EOF
