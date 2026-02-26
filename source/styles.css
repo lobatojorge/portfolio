@@ -531,6 +531,7 @@ html, body {
     gap: clamp(20px, 5vw, 80px);
     justify-content: center;
     flex-wrap: wrap;
+    align-items: flex-start;
     padding: 0 20px;
 }
 
@@ -581,6 +582,13 @@ html, body {
 .project-item:hover span {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Imagen RAP (ices.png): 20% más pequeña que el resto de tarjetas */
+.project-item img[src*="ices.png"] {
+    width: min(200px, 64vw);
+    max-width: 200px;
+    max-height: 200px;
 }
 
 /* --- CONTACTO --- */

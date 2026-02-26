@@ -1,15 +1,15 @@
-# Valida que data/projects.json existe y es JSON válido en cada push/PR
+# Valida que source/projects.json existe y es JSON válido en cada push/PR
 name: Validate projects.json
 
 on:
   push:
     branches: [main, master]
     paths:
-      - 'data/projects.json'
+      - 'source/projects.json'
   pull_request:
     branches: [main, master]
     paths:
-      - 'data/projects.json'
+      - 'source/projects.json'
 
 jobs:
   validate:
@@ -20,15 +20,15 @@ jobs:
 
       - name: Validate projects.json exists
         run: |
-          if [ ! -f data/projects.json ]; then
-            echo "::error::data/projects.json no existe"
+          if [ ! -f source/projects.json ]; then
+            echo "::error::source/projects.json no existe"
             exit 1
           fi
 
       - name: Validate JSON syntax
         run: |
-          if ! python3 -c "import json; json.load(open('data/projects.json'))"; then
-            echo "::error::data/projects.json no es JSON válido"
+          if ! python3 -c "import json; json.load(open('source/projects.json'))"; then
+            echo "::error::source/projects.json no es JSON válido"
             exit 1
           fi
           echo "JSON válido."
@@ -38,7 +38,7 @@ jobs:
           python3 << 'EOF'
           import json
           import sys
-          with open('data/projects.json') as f:
+          with open('source/projects.json') as f:
             data = json.load(f)
           if not isinstance(data, list):
             print("::error::projects.json debe ser un array")

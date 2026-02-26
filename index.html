@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jorge Lobato - Bioinformático</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="source/styles.css">
 </head>
 <body>
     <!-- HERO SECTION -->
     <div class="hero-wrap">
-        <img src="imagenes/morning.jpg" class="hero-img" alt="Fondo">
+        <img src="source/imagenes/morning.jpg" class="hero-img" alt="Fondo">
         
         <div class="hero-content">
             <h1>JORGE LOBATO</h1>
@@ -20,10 +20,10 @@
         
         <div class="social-icons">
             <a href="https://github.com/lobatojorge" target="_blank" rel="noopener noreferrer">
-                <img src="imagenes/github.png" alt="GitHub">
+                <img src="source/imagenes/github.png" alt="GitHub">
             </a>
             <a href="https://linkedin.com/in/jorge-lobato" target="_blank" rel="noopener noreferrer">
-                <img src="imagenes/linkedin.png" alt="LinkedIn">
+                <img src="source/imagenes/linkedin.png" alt="LinkedIn">
             </a>
         </div>
     </div>
@@ -41,7 +41,7 @@
             <div class="video-placeholder" id="videoContainer">
                 <div class="placeholder-bg">
                     <!-- Imagen de osos de fondo -->
-                    <img id="ososImage" src="imagenes/osos.jpg" alt="Osos" class="hidden">
+                    <img id="ososImage" src="source/imagenes/osos.jpg" alt="Osos" class="hidden">
                 </div>
                 <!-- Contenedor inicial con texto y botón de play -->
                 <div class="video-initial-content" id="initialContent">
@@ -73,7 +73,7 @@
         <hr class="projects-divider">
 
         <div class="projects-grid" id="projectsGrid">
-            <!-- Las tarjetas se generan dinámicamente desde data/projects.json -->
+            <!-- Las tarjetas se generan dinámicamente desde source/projects.json -->
         </div>
     </div>
 
@@ -115,7 +115,7 @@
     </script>
 
     <script>
-        // Carga dinámica de proyectos desde data/projects.json
+        // Carga dinámica de proyectos desde source/projects.json
         (function () {
             var grid = document.getElementById('projectsGrid');
             if (!grid) return;
@@ -142,10 +142,10 @@
             }
 
             function showError() {
-                grid.innerHTML = '<p class="projects-error">No se pudieron cargar los proyectos. <a href="data/projects.json">Ver datos</a>.</p>';
+                grid.innerHTML = '<p class="projects-error">No se pudieron cargar los proyectos. <a href="source/projects.json">Ver datos</a>.</p>';
             }
 
-            fetch('data/projects.json')
+            fetch('source/projects.json')
                 .then(function (res) {
                     if (!res.ok) throw new Error('HTTP ' + res.status);
                     return res.json();

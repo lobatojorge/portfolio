@@ -3,24 +3,24 @@
     "id": "tfg",
     "title": "Dinámica poblacional",
     "slug": "tfg",
-    "image": "imagenes/salmon.png",
-    "url": "proyectos/tfg.html",
+    "image": "source/imagenes/salmon.png",
+    "url": "source/proyectos/tfg.html",
     "external": false
   },
   {
     "id": "tfm",
     "title": "Comunidad Arañas",
     "slug": "tfm",
-    "image": "imagenes/arana.png",
-    "url": "proyectos/tfm.html",
+    "image": "source/imagenes/arana.png",
+    "url": "source/proyectos/tfm.html",
     "external": false
   },
   {
     "id": "rap-ices",
     "title": "Auditoría de datos marinos",
     "slug": "rap-ices",
-    "image": "imagenes/ices.png",
+    "image": "source/imagenes/ices.png",
     "url": "https://github.com/lobatojorge/RAP-ICES-",
-    "external": true  
+    "external": true
   }
 ]
